@@ -139,6 +139,81 @@ Switch from Power BI environment to Data Engineering environment
 - From the dropdown, "Name Lakehouse"- <Google_Custom_SearchDB>
 - Click "create"
 
+## DATA INGESTION
+In the data ingestion stage, we will be creating two different Data Factory to extracting  two separate set of data from different sources using different APIs,  The data are 
+1.Daily statistics of to top crypto currencies and 
+2. Latest News and opinions on crypto currencies.
+
+#### Crypto Data
+Using the Data Factory component of Fabric.
+- On the bottom left, click on the Power BI icon.
+- From the list of icons, click the "Data Factory" icon to move into Data Factory environment
+- Click on the "Data Pipeline" tab, to create a new pipeline for the Data Factory.
+- Name Pipeline "US Election Data Pipeline "
+- Then, click "Create" to create Data Factory Pipeline
+- At the top, click on "Copy Data" tab, from the drop-down, choose "Add to Canvas" to copy data from Source(CoinMarketCap) to Destination(Lakehouse Database)
+- In Data Factory canvas --> "General" tab --> "Name" : Copy daily crypto statistics.
+- Then Click on "Source" tab. To configure Source Connection
+  - In "Connection" field, Click on the drop-down and select "more"(because our data source is outside of Fabric Environment)
+  - New Sources--> click on "View more"-->Scroll down and select "REST" from variety of options. REST is the resource use for connecting to APIs
+  - On "Connection Setting" heading, enter Base URL(https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?limit=35)
+  - On "Connection Credentials" sub-heading, input connection name, say (Crypto_currencies). This is for easy reference purpose.
+  - Then, click "Connect"
+  - Test Data Factory connection to  API Data Source, by clicking on the " Test Connection" tab. Connection was successful, this prove that Data Factory has establish connection with          CoinMarketCap.
+  - On the left, click "Advance"  --> Additional Headers "+" --> input headers name (X-CMC_PRO_API_KEY) and your API Key (***************)
+ - Preview Data, by clicking on the "Preview Data" tab
+   
+##### Screen Shot
+![Screenshot 2024-09-15 203757](https://github.com/user-attachments/assets/c5dd4a9a-237f-465a-8162-c5f7639c24d4)
+
+- Click on "Destination" tab
+  - On "Connection" field drop-down, select previously created Lakehouse Database "Crypto"
+  - On " Root Folder" field, Choose "File".- File because we 're copying the raw data in a JSON format.
+  - On "File Path" field, Leave the "Directory" field empty. Fill the "File Name" with a file name, say(crypto_data.json). This will be the file name in the of copy data in destination Lakehouse DB.
+  -On "File Format" field drop-down, choose "JSON"
+  - Then, click on the "save" tab at the top-left to save the pipeline
+  - Click "Run" tab at the top to run pipeline.
+Data is Successfully copy from CoinMarketCap End point source to Lakehouse DB
+
+##### Screen Shot
+![Screenshot 2024-09-15 204810](https://github.com/user-attachments/assets/2e4c9794-df48-49d4-a699-21c219170e53)
+
+#### Crypto News & Opinins
+Using the Data Factory component of Fabric.
+- On the bottom left, click on the Power BI icon.
+- From the list of icons, click the "Data Factory" icon to move into Data Factory environment
+- Click on the "Data Pipeline" tab, to create a new pipeline for the Data Factory.
+- Name Pipeline,say (Digital Currency)
+- Then, click "Create" to create Data Factory Pipeline
+- On the Data Factory canvas
+- At the top, click on "Copy Data" tab, from the drop-down, choose "Add to Canvas" to copy data from Source(Google CSE JSON API) to Destination(Lakehouse Database)
+- In Data Factory canvas --> "General" tab --> "Name" : "Copy latest  Crypto news_opinions"
+- Then Click on "Source" tab. To configure Source Connection
+  - In "Connection" field, Click on the drop-down and select "more"(because our data source is outside of Fabric Environment)
+  - New Sources--> click on "View more"-->Scroll down and select "REST" from variety of options. REST is the resource use for connecting to APIs
+  - On "Connection Setting" heading-->Base URL, input Endpoint and Query Parameter(s) ( https://www.googleapis.com/customsearch/v1?q=YOUR_QUERY&cx=YOUR_ENGINE_ID&key=YOUR_API_KEY&q=SEARCH_QUERY)
+  - On "Connection Credentials" sub-heading-->, input connection name for ease of reference purpose, say "crypto_new_opinions_CSE"
+  - Then, click "Connect"
+  - Test Data Factory connection to  API Data Source, by clicking on the " Test Connection" tab. Connection was successful, this prove that  Data Factory has establish connection to my Google CSE JSON API source.
+  - Preview Data, by clicking on the "Preview Data" tab
+ - ***IMAGE
+
+![Screenshot 2024-09-15 222203](https://github.com/user-attachments/assets/6fe9b7fe-a508-49eb-92df-86229c6dc4b8)
+
+- Click on "Destination" tab
+  - On "Connection" field drop-down, select previously created Lakehouse Database "Crypto"
+  - On " Root Folder" field, Choose "File".- File because we 're copying the raw data in a JSON format.
+  - On "File Path" field, Leave the "Directory" field empty. Fill the "File Name" with a file name, say(crypto-news-opinion.json). This will be the file name in the of copy data in destination Lakehouse DB.
+  - On "File Format" field drop-down, choose "JSON"
+  - Then, click on the "save" tab at the top-left to save the pipeline
+  - Click "Run" tab at the top to run pipeline.
+Data is Successfully copy from Google CSE end point to Lakehouse DB
+
+![Screenshot 2024-09-15 221748](https://github.com/user-attachments/assets/589bdf88-db34-4237-b56d-1cb8ab14bd45)
+
+*** IMAGE
+
+
 
 
 
