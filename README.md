@@ -13,7 +13,8 @@ The proposed solution involves the following steps:
   identify emerging trends.
 - Dashboard Development: Create a dynamic dashboard in Power BI that visualizes key performance indicators (KPIs) for each cryptocurrency, including price charts, trading volume trends, and sentiment analysis 
   results.
-- Alerts: Utilize Data Activator to create email alerts when prices or trends cross a certain treshhold.
+- Data Activator: To configure  email alerts in Power BI visuals to predict market sentiments shaped by latest news, opinions and releases in the digital asset space.
+- Orchestrate the whole process as an End-to-End Pipeline using Microsoft Fabric- Data Factory.
 
 ## Benefits
 - Real-time Insights: Access up-to-date information on cryptocurrency performance and sentiment.
