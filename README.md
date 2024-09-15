@@ -7,7 +7,8 @@ The cryptocurrency market is characterized by rapid price fluctuations, evolving
 
 ## Proposed Solution
 The proposed solution involves the following steps:
-- Data Extraction: Utilize the CoinMarketCap API to collect live data on the top 10 cryptocurrencies, including market capitalization, trading volume, price, and other relevant metrics.
+- Data Extraction: Utilize the CoinMarketCap API to collect live data on the top cryptocurrencies, including market capitalization, trading volume, price, and other relevant metrics. As well as leverage Google 
+  Custom Search Engine API to collect latest information, news,opinions and insightson the crypto market.
 - Data Transformation: Employ Synapse Data Engineer in Microsoft Fabric to transform and cleanse the extracted data, ensuring data quality and consistency.
 - Sentiment Analysis: Leverage the Google CSE JSON API to extract daily news and opinions related to the top  cryptocurrencies. Perform sentiment analysis using Synapse Data Science to gauge market sentiment and 
   identify emerging trends.
