@@ -211,7 +211,129 @@ Data is Successfully copy from Google CSE end point to Lakehouse DB
 
 ![Screenshot 2024-09-15 221748](https://github.com/user-attachments/assets/589bdf88-db34-4237-b56d-1cb8ab14bd45)
 
-*** IMAGE
+
+
+## DATA TRANSFORMAION
+In the data transformation phase, we will be processing our data using two different Spark Notebooks to transform extracted data from CoinMarketCap API and Google CSE API respectively.
+
+#### Crypto Data
+This is done using Synapse Data Engineering Component of Fabric.
+- On the bottom left, click on the Power BI icon or whatever icon present there.
+- From the list of icons, choose Synapse Data Engineering. 
+- In Synapse Data Engineering environment, click on "Notebook" tab,-To create a Spark Notebook to "transform" the raw json file into a clean data table.
+- On the top-left, click on the Notebook name and rename appropriately for ease referencing.
+Step 1.
+Use the created Notebook to import and read the raw json file that exist in stored Lakehouse Database.
+- On the Left, click on "Lakehouse" button.
+- On the left, click "Add Lakehouse" button.- This help in accessing the different tables and files that reside in the Lakehouse Database directly from the Notebook.
+- Choose "Existing Lakehouse".
+- Click "Add".
+- Check or choose the Lakehouse where the raw json data resides.
+- Click "Add".
+- From the imported Lakehouse Database to the left, click on "File " (-This shows all files that reside in the Lakehouse Database),then "..." , then "Load Data" 
+- There are two options (Spark or Pandas), Choose "Spark". 
+A code is automatically generated to read the raw json file as a Pyspark DataFrame.
+
+```
+
+df = spark.read.option("multiline", "true").json("Files/crypto_data.json")
+# df now is a Spark DataFrame containing JSON data from "Files/crypto_data.json".
+display(df)
+
+```
+
+```
+# To check Schema, data type of each column and if the data is nested or in array or  not
+df.printSchema()
+
+```
+
+```
+
+from pyspark.sql.functions import explode, col
+
+# Explode the 'data' array to get individual records
+exploded_df = df.select(explode(col('data')).alias('data'))
+
+```
+
+```
+# Define the list of cryptocurrencies to extract from the list of 35 crypto currencies.
+cryptos_to_extract = ['Bitcoin', 'Ethereum', 'Tether USDt', 'BNB', 'Solana', 'Dogecoin', 'USDC', 'XRP', 'Toncoin', 'TRON', 'Cardano', 'Avalanche']
+
+# Filter and select the required fields
+filtered_df = exploded_df.select(
+    col('data.name').alias('Name'),
+    col('data.symbol').alias('Symbol'),
+    col('data.quote.USD.price').alias('Price'),
+    col('data.quote.USD.market_cap').alias('Market Cap'),
+    col('data.quote.USD.volume_24h').alias('Volume (24h)'),
+    col('data.quote.USD.percent_change_24h').alias('Percent Change (24h)'),
+    col('data.circulating_supply').alias('Circulating Supply'),
+    col('data.total_supply').alias('Total Supply'),
+    col('data.quote.USD.fully_diluted_market_cap').alias('Fully Diluted Market Cap'),
+    col('data.last_updated').alias('Last Updated')
+).filter(col('Name').isin(*cryptos_to_extract))
+
+# Display the filtered data
+filtered_df.show(truncate=False)
+
+```
+
+```
+from pyspark.sql.functions import col
+
+# Rename columns in DataFrame to match the Delta table schema to improve code readability, consistency, reliability and robustness
+renamed_df = filtered_df.select(
+    col('Name').alias('name'),
+    col('Symbol').alias('symbol'),
+    col('Price').alias('price'),
+    col('Market Cap').alias('market_cap'),
+    col('Volume (24h)').alias('volume_24h'),
+    col('Percent Change (24h)').alias('percent_change_24h'),
+    col('Circulating Supply').alias('circulating_supply'),
+    col('Total Supply').alias('total_supply'),
+    col('Fully Diluted Market Cap').alias('fully_diluted_market_cap'),
+    col('Last Updated').alias('last_updated')
+)
+
+```
+
+```
+display(renamed_df)
+
+```
+##### Screen Shot.
+
+![Screenshot 2024-09-17 114244](https://github.com/user-attachments/assets/9fb63932-011c-4f66-ad5f-32bce082c02c)
+
+```
+from pyspark.sql.functions import format_number, col
+
+# Convert selected columns that are in decimal places into zero decimal places
+formatted_df = renamed_df.withColumn("market_cap", format_number(col("market_cap").cast("double"), 0)) \
+                 .withColumn("volume_24h", format_number(col("volume_24h").cast("double"), 0)) \
+                 .withColumn("circulating_supply", format_number(col("circulating_supply").cast("double"), 0)) \
+                 .withColumn("total_supply", format_number(col("total_supply").cast("double"), 0)) \
+                 .withColumn("fully_diluted_market_cap", format_number(col("fully_diluted_market_cap").cast("double"), 0))
+
+```
+
+```
+display(formatted_df)
+
+```
+##### Screen Shot
+
+![Screenshot 2024-09-17 110319](https://github.com/user-attachments/assets/5baa52fb-7a32-46f3-b6b0-0c39bc9104bc)
+
+```
+# Write the DataFrame to the Delta table
+renamed_df.write.format("delta") \
+    .mode("append") \
+    .saveAsTable("crypto.tbl_currency_data")
+
+```
 
 
 
