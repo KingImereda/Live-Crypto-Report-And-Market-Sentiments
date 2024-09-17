@@ -336,6 +336,232 @@ renamed_df.write.format("delta") \
 ```
 
 
+#### Crypto News & Opinions
+```
+df = spark.read.option("multiline", "true").json("Files/crypto1-news-opinion.json")
+# df now is a Spark DataFrame containing JSON data from "Files/crypto1-news-opinion.json".
+display(df)
+```
+
+```
+#Select the items column where the nested data is and ignore the other columns.
+
+df = df.select(["items"])
+
+```
+
+```
+from pyspark.sql.functions import explode
+
+# Explode json object(items) as an alias(json_object)
+
+df_exploded = df.select(explode(df["items"]).alias("json_object"))
+
+```
+
+```
+
+display(df_exploded)
+
+```
+
+```
+
+# Converting the Exploded Json Dataframe to a single Json string list,i.e. "json_list" variable
+
+json_list = df_exploded.toJSON().collect()
+
+```
+
+```
+#Testing the JSON string,by fetching all the 10 json object and see their json structure
+
+print(json_list)
+
+```
+
+```
+# Fectching just one of the json object to view its json structure
+
+print(json_list[0])
+```
+```
+"""
+We need to process these JSON structures to extract the desired information 
+and create a clean table format. However, since the output is a string, it presents challenges in retrieving the necessary data. 
+To extract the information, we would need to write regular expressions and other processing steps because it is a string.
+ To simplify this process, we should convert the JSON string into a JSON dictionary, making it much easier to access all or selected information.
+ For that, we will be using this function <json.loads>
+"""
+```
+```
+# First, we import the json library <import json>, then load a sample news article (json_list[0])
+import json
+
+# Convert the JSON String to a JSON dictionary
+news_json =json.loads(json_list[0])
+
+```
+
+```
+# Our output is a json dictionary, though look similar to a json string.
+print(news_json)
+```
+```
+"""
+Now we can easily use the json dictionary to process the data and get information out of it.
+For example let us get a snippet of the news article [0]
+"""
+```
+```
+"""
+Testing the JSON Dictionary. In order to get the 'snippet' value from our dictionary news article [0]. 
+We needed to see where the snippet property lies within the json dictionary.It lies within the "json_object"
+of the dictionary,then we drill in inside 'json-object' to extract the 'snippet' value.
+Note, this text output is made possible because the json is a dictionary.
+"""
+
+display(news_json["json_object"]["snippet"])
+
+```
+
+```
+"""
+selecting the information we need in a news article [0], these selected information (link,title,snippet,) 
+will be our Column Titles or the Schema of our DataFrame. To extract these information easily from the json dictionary,
+let us make use on an online json parser <jason.parser.online> to see the exact detail structure of this json file
+"""
+
+print(news_json["json_object"]["link"])
+print(news_json["json_object"]["title"])
+print(news_json["json_object"]["snippet"])
+
+
+"""
+The above code is just an example to extract information from a news article out of a possible 10 news articles
+"""
+```
+
+```
+"""
+ To fetch selected information from the json dictionary, iterating over all the articles. 
+ Note, date is not found in the news article, but we fetched the datecolumn from the time stamp 
+attached to each snippet found in each news article.
+"""
+import json
+import re
+from datetime import datetime, timedelta
+
+link = []
+title = []
+snippet = []
+date = []  # New list for storing the extracted date
+
+# Function to extract date from the "snippet"
+def extract_date_from_snippet(snippet_text):
+    # Regular expression to capture time (e.g., "6 hours ago", "2 days ago")
+    match = re.search(r'(\d+)\s*(hour|day)s?\s*ago', snippet_text)
+    
+    if match:
+        amount = int(match.group(1))  # e.g., "6"
+        unit = match.group(2)  # e.g., "hours" or "days"
+        
+        # Subtract the time from current datetime to get the correct date
+        if unit == 'hour':
+            date_parsed = datetime.now() - timedelta(hours=amount)
+        elif unit == 'day':
+            date_parsed = datetime.now() - timedelta(days=amount)
+        return date_parsed.date()  # Return only the date part
+    else:
+        return None  # If no timestamp is found, return None
+
+# Process each JSON object in the list
+for json_str in json_list:
+    try:
+        # Parse the JSON string into a dictionary
+        article = json.loads(json_str)
+
+        # Extract information from the dictionary
+        link.append(article["json_object"]["link"])
+        title.append(article["json_object"]["title"])
+        snippet_text = article["json_object"]["snippet"]
+        snippet.append(snippet_text)
+
+        # Extract the date from the snippet and append to date list
+        extracted_date = extract_date_from_snippet(snippet_text)
+        date.append(extracted_date)
+
+    except Exception as e:
+        print(f"Error processing JSON object {e}")
+
+```
+
+```
+# Print out the results
+for l, t, s, d in zip(link, title, snippet, date):
+    print(f"Link: {l}, Title: {t}, Snippet: {s}, Date: {d}")
+
+```
+
+```
+"""
+combining all the list together and create a Dataframe with a defined Schema, so that we can get a proper table structure
+to view all the extracted information about the news
+"""
+
+from pyspark.sql.types import StructType, StructField, StringType, DateType
+
+# Using the zip function to combine all the list we have created so far and this complete list is stored as a data
+data = list(zip(link, title, snippet, date))
+
+# Create a DataFrame from the extracted data . i.e.All individual list will be a column in our DataFrame and these columns are defined bt their data type
+schema = StructType([
+    StructField("Link", StringType(), True),
+    StructField("Title", StringType(), True),
+    StructField("Snippet", StringType(), True),
+    StructField("Date", DateType(), True)
+])
+
+df_cleaned = spark.createDataFrame(data, schema)
+
+```
+
+```
+display(df_cleaned)
+```
+##### Screen Shot
+
+![Screenshot 2024-09-17 193202](https://github.com/user-attachments/assets/a3054099-9b52-44b7-9b3d-09f33f7166a7)
+
+```
+from pyspark.sql.functions import col
+
+# Renamed col[link] to url
+
+df_cleaned_final = df_cleaned.withColumnRenamed("link","url")
+
+```
+
+```
+display(df_cleaned_final)
+
+```
+##### Screen Shot
+
+
+![Screenshot 2024-09-17 193056](https://github.com/user-attachments/assets/899a8068-8b3c-4b3e-8b5e-649ad21c904d)
+
+```
+df_cleaned_final.write.format("delta").mode("append")saveAsTable("Crypto.news_opinions")
+
+```
+
+
+
+
+
+
+
 
 
 
