@@ -551,8 +551,58 @@ display(df_cleaned_final)
 
 ![Screenshot 2024-09-17 193056](https://github.com/user-attachments/assets/899a8068-8b3c-4b3e-8b5e-649ad21c904d)
 
+#### Handling Incrementa Loading
+
+
 ```
-df_cleaned_final.write.format("delta").mode("append")saveAsTable("Crypto.news_opinions")
+from pyspark.sql.utils import AnalysisException
+from pyspark.sql import functions as F
+
+table_name = "Crypto.news_opinions"
+
+# Check if the table exists
+def check_table_exists(spark, table_name):
+    try:
+        return spark.catalog.tableExists(table_name)
+    except AnalysisException:
+        return False
+
+try:
+    if not check_table_exists(spark, table_name):
+        # Save the DataFrame as a new Delta table if it doesn't exist
+        df_cleaned_final.write.format("delta").saveAsTable(table_name)
+        print(f"Table {table_name} created successfully.")
+    else:
+        print("Table Already Exists")
+
+        # Preprocess the source DataFrame to remove duplicates
+        df_cleaned_dedup = df_cleaned_final.dropDuplicates(subset=["url"])
+
+        # Create or replace a temporary view for the deduplicated DataFrame
+        df_cleaned_dedup.createOrReplaceTempView("vw_df_cleaned_final")
+
+        # Perform the MERGE operation
+        merge_query = f"""
+            MERGE INTO {table_name} target_table
+            USING vw_df_cleaned_final source_view
+
+            ON source_view.url = target_table.url
+
+            WHEN MATCHED AND (
+                source_view.Title <> target_table.Title OR
+                source_view.Snippet <> target_table.Snippet OR
+                source_view.Date <> target_table.Date
+            )
+            THEN UPDATE SET *
+            WHEN NOT MATCHED THEN INSERT *
+        """
+        # Execute the MERGE statement
+        spark.sql(merge_query)
+        print("Table merged successfully with new data.")
+
+except Exception as e:
+    print(f"An error occurred: {str(e)}")
+
 
 ```
 
