@@ -1,4 +1,4 @@
-# Business Case: Real-time Crypto Currency Performance and Sentiment Analysis Dashboard
+# Business Case: Real-time Crypto Currency Performance and Sentiment Analysis Report
 # Executive Summary
 This business case proposes the development of a real-time dashboard that provides comprehensive insights into the performance and sentiment surrounding the top  cryptocurrencies. By leveraging advanced data analytics tools and APIs, this dashboard will empower stakeholders with critical information to make informed decisions in the volatile cryptocurrency market.
 
