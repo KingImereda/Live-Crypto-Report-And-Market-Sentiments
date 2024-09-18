@@ -307,17 +307,6 @@ display(renamed_df)
 
 ![Screenshot 2024-09-17 114244](https://github.com/user-attachments/assets/9fb63932-011c-4f66-ad5f-32bce082c02c)
 
-```
-from pyspark.sql.functions import format_number, col
-
-# Convert selected columns that are in decimal places into zero decimal places
-formatted_df = renamed_df.withColumn("market_cap", format_number(col("market_cap").cast("double"), 0)) \
-                 .withColumn("volume_24h", format_number(col("volume_24h").cast("double"), 0)) \
-                 .withColumn("circulating_supply", format_number(col("circulating_supply").cast("double"), 0)) \
-                 .withColumn("total_supply", format_number(col("total_supply").cast("double"), 0)) \
-                 .withColumn("fully_diluted_market_cap", format_number(col("fully_diluted_market_cap").cast("double"), 0))
-
-```
 
 ```
 display(formatted_df)
