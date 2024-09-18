@@ -7,14 +7,16 @@ The cryptocurrency market is characterized by rapid price fluctuations, evolving
 
 ## Proposed Solution
 The proposed solution involves the following steps:
-- Data Extraction: Utilize the CoinMarketCap API to collect live data on the top cryptocurrencies, including market capitalization, trading volume, price, and other relevant metrics. As well as leverage Google 
-  Custom Search Engine API to collect latest information, news,opinions and insightson the crypto market.
+- Data Extraction: Utilize the CoinMarketCap API to extract live data on the top cryptocurrencies, including market capitalization, trading volume, price, and 
+  other relevant metrics. Also wewill leverage Google Custom Search Engine API to extract latest information, news,opinions and insightson the crypto market.
 - Data Transformation: Employ Synapse Data Engineer in Microsoft Fabric to transform and cleanse the extracted data, ensuring data quality and consistency.
-- Sentiment Analysis: Leverage the Google CSE JSON API to extract daily news and opinions related to the top  cryptocurrencies. Perform sentiment analysis using Synapse Data Science to gauge market sentiment and 
-  identify emerging trends.
-- Dashboard Development: Create a dynamic dashboard in Power BI that visualizes key performance indicators (KPIs) for each cryptocurrency, including price charts, trading volume trends, and sentiment analysis 
-  results.
-- Data Activator: To configure  email alerts in Power BI visuals to predict market sentiments shaped by latest news, opinions and releases in the digital asset space.
+- Sentiment Analysis: Leverage the Google CSE JSON API to extract daily news and opinions related to the top  cryptocurrencies. Perform sentiment analysis using 
+  Synapse Data Science to gauge market sentiment and identify emerging trends.
+- Dashboard Development:Create a Semantic Model(Entity Relation Diagram) for the Crypto Data Table and Crpto News Table In Lakehouse, this serves as the bases of 
+  our dynamic report in Power BI which visualizes key performance indicators (KPIs) for each cryptocurrency, including price charts, 
+  trading volume trends, and sentiment analysis results.
+- Data Activator: To configure  email alerts in Power BI visuals to predict market sentiments shaped by latest news, opinions and releases in the digital asset 
+  space.
 - Orchestrate the whole process as an End-to-End Pipeline using Microsoft Fabric- Data Factory.
 
 ## Benefits
