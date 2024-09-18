@@ -25,10 +25,10 @@ The proposed solution involves the following steps:
 
 ## Technical Approach
 - Data Sources: CoinMarketCap API, Google CSE JSON API
-- Data Ingestion: Microsoft Fabric Data Factory
-- Data Transformation: Microsoft Fabric Synapse Data Engineer
-- Sentiment Analysis: Micro Fabric Synapse Data Science
-- Dashboarding: Power BI
+- Data Ingestion: Data Factory in Microsoft Fabric
+- Data Transformation: Synapse Data Engineer in Microsoft Fabric
+- Sentiment Analysis: Synapse Data Science in Microsoft Fabric
+- Dashboarding: Power BI in Microsoft Fabric
 
 Project Timeline
 Phase 1: Data Extraction and Transformation: 2 weeks
@@ -49,7 +49,7 @@ The proposed cryptocurrency performance and sentiment analysis dashboard offers 
 
 
 ## Environment setup
-
+##### There are mainly two ways to extract data from a website or webpage. One, using the API of the website . Two, through web scraping by accessing the HTML of the webpage to extract data. In this project we shall be using APIs to extract data from two different sources.
 Configuring Your Data Sources
 
 ### 1.Create a free CoinMarketCap API 
