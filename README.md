@@ -309,14 +309,6 @@ display(renamed_df)
 
 
 ```
-display(formatted_df)
-
-```
-##### Screen Shot
-
-![Screenshot 2024-09-17 110319](https://github.com/user-attachments/assets/5baa52fb-7a32-46f3-b6b0-0c39bc9104bc)
-
-```
 # Write the DataFrame to the Delta table
 renamed_df.write.format("delta") \
     .mode("append") \
