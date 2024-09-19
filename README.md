@@ -750,6 +750,10 @@ sentiment_df = result.withColumn("sentiment", col("response.documents.sentiment"
 display(sentiment_df)
 
 ```
+##### Screen Shot
+
+
+![Screenshot 2024-09-19 025054](https://github.com/user-attachments/assets/f3aceb18-2b10-42dd-9f6a-28a7f38823d5)
 
 ```
 
@@ -762,6 +766,9 @@ sentiment_df_final = sentiment_df.drop("error", "response")
 display(sentiment_df_final)
 
 ```
+##### Screen Shot
+
+![Screenshot 2024-09-19 025423](https://github.com/user-attachments/assets/69192402-f652-4f65-9d72-960d9d8fe8fc)
 
 ```
 
