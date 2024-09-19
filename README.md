@@ -637,43 +637,35 @@ from pyspark.sql.functions import col, to_date
 df = df.drop("last_updated").drop("symbol")
 
 # Convert the 'Date' column from string to date format
-df_data = df.withColumn("Date", to_date(col("Date"), "yyyy-MM-dd"))
+df_crypto_data = df.withColumn("Date", to_date(col("Date"), "yyyy-MM-dd"))
 
 
 ```
 
 ```
-display(df_data)
+display(df_crypto_data)
 
 ```
 
 ```
-from pyspark.sql.functions import format_number, col
-
-# # Convert selected columns that are in decimal places into zero decimal places
-df_data_cleaned = df_data.withColumn("price", format_number(col("price").cast("double"), 2)) \
-                 .withColumn("market_cap", format_number(col("market_cap").cast("double"), 0)) \
-                 .withColumn("volume_24h", format_number(col("volume_24h").cast("double"), 0)) \
-                 .withColumn("circulating_supply", format_number(col("circulating_supply").cast("double"), 0)) \
-                 .withColumn("total_supply", format_number(col("total_supply").cast("double"), 0)) \
-                 .withColumn("fully_diluted_market_cap", format_number(col("fully_diluted_market_cap").cast("double"), 0))
-
+df_crypto_data.printSchema()
 
 ```
+
+
 
 ```
 # Cleaned output of Crypto data
-display(df_data_cleaned)
+display(df_crypto_data)
 
 ```
 ##### Screen Shot
 
-![Screenshot 2024-09-19 011952](https://github.com/user-attachments/assets/a7bd3073-5800-4253-bee5-56f36866ac53)
-
+![Screenshot 2024-09-19 224406](https://github.com/user-attachments/assets/c88cf7ee-adc5-499f-8678-a39d65fb56fb)
 
 ```
 # Write the DataFrame to the Delta table
-df_data_cleaned.write.format("delta") \
+df_crypto_data_cleaned.write.format("delta") \
     .mode("append") \
     .saveAsTable("crypto.tbl_cleaned_data")
 
