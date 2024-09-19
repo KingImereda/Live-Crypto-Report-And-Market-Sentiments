@@ -822,7 +822,20 @@ except Exception as e:
 
 ```
 
+### Semantic Model
 
+In order to utilize our data in creating  Crypto report in Power BI, we need to create a Semantic Model. Semantic Model is an advance Entity Relation Diagram of Business intelligence which establish the relationship between the Crypto Data table and Crypto Sentiment Table. In building the Semantic Model, the two tables will be joined on the Date column.
+
+Steps:
+- Go to Lakehouse Database
+- At the top left, click on "New Semantic Model"
+- Under (Direct Lake Semantic Model Name),Give name to your Semantic Model.
+- Under "workspace" Choose the appropriate Workspace where the Data Model is to be created
+- Scroll down, select the table(s) you want to include the semantic model, then click (Confirm)
+
+##### Data Modeling Image
+
+![Screenshot 2024-09-19 033021](https://github.com/user-attachments/assets/5af49818-3570-4116-a22f-f694f2e6c791)
 
 
 
