@@ -816,7 +816,7 @@ except Exception as e:
 
 ### Semantic Model
 
-In order to utilize our data in creating  Crypto report in Power BI, we need to create a Semantic Model. Semantic Model is an advance Entity Relation Diagram of Business intelligence which establish the relationship between the Crypto Data table and Crypto Sentiment Table. In building the Semantic Model, the two tables will be joined on the Date column.
+In order to utilize our data in creating  Crypto report in Power BI, we need to create a Semantic Model. Semantic Model is an advance Entity Relation Diagram of Business intelligence which establish the relationship between the Crypto Data table and Crypto Sentiment Table. In building the Semantic Model, we will be using the crypto data table and the crypto news table.
 
 Steps:
 - Go to Lakehouse Database
@@ -827,7 +827,8 @@ Steps:
 
 ##### Data Modeling Image
 
-![Screenshot 2024-09-19 033021](https://github.com/user-attachments/assets/5af49818-3570-4116-a22f-f694f2e6c791)
+
+![Screenshot 2024-09-19 221011](https://github.com/user-attachments/assets/a5c2a8b9-489c-4ea1-9e3f-212f3f584d33)
 
 
 
