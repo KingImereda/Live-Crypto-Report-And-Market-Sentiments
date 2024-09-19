@@ -589,6 +589,93 @@ except Exception as e:
 
 ```
 
+### Crypto Data
+
+##### DATA CLEANING.
+This is done using Synapse Data Engineering Component of Fabric.
+- On the bottom left, click on the Power BI icon or whatever icon present there.
+- From the list of icons, choose Synapse Data Engineering. 
+- In Synapse Data Engineering environment, click on "Notebook" tab,-To create a Spark Notebook to "transform" the raw json file into a clean data table.
+- On the top-left, click on the Notebook name and rename appropriately foe ease referencing.
+Step 1.
+Use the created Notebook to import and read the delta table that exist in stored Lakehouse Database.
+- On the Left, click on "Lakehouse" button.
+- On the left, click "Add Lakehouse" button.- This help in accessing the different tables and files that reside in the Lakehouse Database directly from the Notebook.
+- Choose "Existing Lakehouse".
+- Click "Add".
+- Check or choose the Lakehouse where the delta table resides.
+- Click "Add".
+- From the imported Lakehouse Database to the left, click on "Tables " (-This shows all tables that reside in the Lakehouse Database),then "..." , then "Load Data" 
+- There is one option (Spark), Choose "Spark".  The code to read the delta table is automatically populated.
+
+```
+df = spark.sql("SELECT * FROM Crypto.tbl_currency_data")
+display(df)
+
+```
+```
+
+# Removing timestamp from the last_updated columnimport pyspark.sql.functions as F
+
+# Assuming your DataFrame is named 'df' and the column containing the timestamp is 'last_updated'
+df = df.withColumn(
+    "Date",
+    F.to_date(F.col("last_updated"))
+)
+
+```
+
+```
+display(df)
+
+```
+
+```
+from pyspark.sql.functions import col, to_date
+
+# Drop the 'last_updated' column, so that we won't have duplicate date columns
+df = df.drop("last_updated").drop("symbol")
+
+# Convert the 'Date' column from string to date format
+df_data = df.withColumn("Date", to_date(col("Date"), "yyyy-MM-dd"))
+
+
+```
+
+```
+display(df_data)
+
+```
+
+```
+from pyspark.sql.functions import format_number, col
+
+# # Convert selected columns that are in decimal places into zero decimal places
+df_data_cleaned = df_data.withColumn("price", format_number(col("price").cast("double"), 2)) \
+                 .withColumn("market_cap", format_number(col("market_cap").cast("double"), 0)) \
+                 .withColumn("volume_24h", format_number(col("volume_24h").cast("double"), 0)) \
+                 .withColumn("circulating_supply", format_number(col("circulating_supply").cast("double"), 0)) \
+                 .withColumn("total_supply", format_number(col("total_supply").cast("double"), 0)) \
+                 .withColumn("fully_diluted_market_cap", format_number(col("fully_diluted_market_cap").cast("double"), 0))
+
+
+```
+
+```
+# Cleaned output of Crypto data
+display(df_data_cleaned)
+
+```
+
+```
+# Write the DataFrame to the Delta table
+df_data_cleaned.write.format("delta") \
+    .mode("append") \
+    .saveAsTable("crypto.tbl_cleaned_data")
+
+```
+
+
 
 
 
