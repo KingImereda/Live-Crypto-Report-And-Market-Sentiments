@@ -679,6 +679,144 @@ df_data_cleaned.write.format("delta") \
 
 ```
 
+##### SENTIMENT ANALYSIS USING SYNAPSE MACHINE LEARNING(Incremental Loading).
+This is done using Synapse Data Science Component of Fabric.
+- On the bottom left, click on the Power BI icon or whatever icon present there.
+- From the list of icons, choose Synapse Data Science option. 
+- In Synapse Data science environment, click on "Notebook" tab,-To use pre-trained Machine Learning Model.
+- On the top-left, click on the Notebook name and rename appropriately for ease referencing.
+Steps:
+Use the created Notebook to import and read the cleaned data stored in a delta table in Lakehouse Database.
+- On the Left, click on "Lakehouse" button.
+- On the left, click "Add Lakehouse" button.- This help in accessing the different tables and files that reside in the Lakehouse Database directly from the Notebook.
+- Choose "Existing Lakehouse".
+- Click "Add".
+- Check or choose the Lakehouse where the data resides.
+- Click "Add".
+- From the imported Lakehouse Database to the left, click on "Tables " (-This shows tables that reside in the Lakehouse Database),then "..." , then "Load Data" 
+- Then, Choose "Spark".
+A code is automatically generated to read the raw delta table as a Pyspark DataFrame.
+
+
+```
+
+df = spark.sql("SELECT * FROM Crypto.news_opinions ")
+display(df)
+
+```
+
+```
+
+# import the synapse ML library (Use a pre-trained intelligent model called AnalyzeText)
+
+import synapse.ml.core
+from synapse.ml.services import AnalyzeText
+
+```
+
+```
+#Import the Model and configure the Input and Output column
+model = (AnalyzeText()
+        .setTextCol("Snippet")    # Column we are using to predict the sentiment of the news
+        .setKind("SentimentAnalysis") #Select the keywords of ML task, bcos we have a couple of ML task, Such as Language detector, sentiment analysis etc.
+        .setOutputCol("response") # Specifying the column name to store the actual output that the ML generates, here we specify the output name as response
+        .setErrorCol("error"))  # If something goes wrong while performing the ML task, this column will capture the errorand if everythingworks fine, thiscolumnwe have null value
+
+```
+
+```
+
+#Apply the model to our Dataframe
+result = model.transform(df)
+
+```
+
+```
+
+display(result)
+
+```
+
+```
+
+from pyspark.sql.functions import col
+
+sentiment_df = result.withColumn("sentiment", col("response.documents.sentiment"))
+
+```
+
+```
+
+display(sentiment_df)
+
+```
+
+```
+
+sentiment_df_final = sentiment_df.drop("error", "response")
+
+```
+
+```
+
+display(sentiment_df_final)
+
+```
+
+```
+
+from pyspark.sql.utils import AnalysisException
+from pyspark.sql import functions as F
+
+table_name = "Crypto.sentiments"
+
+# Check if the table exists
+def check_table_exists(spark, table_name):
+    try:
+        return spark.catalog.tableExists(table_name)
+    except AnalysisException:
+        return False
+
+try:
+    if not check_table_exists(spark, table_name):
+        # Save the DataFrame as a new Delta table if it doesn't exist
+        sentiment_df_final.write.format("delta").mode("append").saveAsTable(table_name)
+        print(f"Table {table_name} created successfully.")
+    else:
+        print("Table Already Exists")
+
+        # Preprocess the source DataFrame to remove duplicates
+        sentiment_df_dedup = sentiment_df_final.dropDuplicates(subset=["url"])
+
+        # Create or replace a temporary view for the deduplicated DataFrame
+        sentiment_df_dedup.createOrReplaceTempView("vw_sentiment_df_final")
+
+        # Perform the MERGE operation
+        merge_query = f"""
+            MERGE INTO {table_name} target_table
+            USING vw_sentiment_df_final source_view
+
+            ON source_view.url = target_table.url
+
+            WHEN MATCHED AND (
+                source_view.Title <> target_table.Title OR
+                source_view.Snippet <> target_table.Snippet OR
+                source_view.Date <> target_table.Date
+            )
+            THEN UPDATE SET *
+            WHEN NOT MATCHED THEN INSERT *
+        """
+        # Execute the MERGE statement
+        spark.sql(merge_query)
+        print("Table merged successfully with new data.")
+
+except Exception as e:
+    print(f"An error occurred: {str(e)}")
+
+```
+
+
+
 
 
 
