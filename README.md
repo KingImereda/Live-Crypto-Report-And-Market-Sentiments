@@ -666,6 +666,10 @@ df_data_cleaned = df_data.withColumn("price", format_number(col("price").cast("d
 display(df_data_cleaned)
 
 ```
+##### Screen Shot
+
+![Screenshot 2024-09-19 011952](https://github.com/user-attachments/assets/a7bd3073-5800-4253-bee5-56f36866ac53)
+
 
 ```
 # Write the DataFrame to the Delta table
