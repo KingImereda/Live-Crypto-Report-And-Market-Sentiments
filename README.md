@@ -1017,7 +1017,7 @@ The pipeline will be automatically triggered at 6: pm in the evening every day, 
 - "Time Zone" .You have the option of selecting your time zone, but the default is the time zone you are based on, so it's advisable to go with the default time zone.
 -  Then, click "Apply"
 ##### Pipeline Monitor.
--Go to Data Factory
+Go to Data Factory
 - Click "View Run History" tab at the top.--You will see recent run of your pipeline. Better still you can proceed to
 - "Go to Monitoring hub" at the bottom-left
 - Then, click "Go to Monitoring hub"
@@ -1054,7 +1054,7 @@ The pipeline will be automatically triggered at 7: pm in the evening every day, 
 - "Time Zone" .You have the option of selecting your time zone, but the default is the time zone you are based on, so it's advisable to go with the default time zone.
 -  Then, click "Apply"
 ##### Pipeline Monitor.
--Go to Data Factory
+Go to Data Factory
 - Click "View Run History" tab at the top.--You will see recent run of your pipeline. Better still you can proceed to
 - "Go to Monitoring hub" at the bottom-left
 - Then, click "Go to Monitoring hub"
