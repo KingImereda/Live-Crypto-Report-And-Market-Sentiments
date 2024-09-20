@@ -987,24 +987,22 @@ Page 4.
 
 ## Pipeline 1: Orchestration For Crypto Data Using Data Factory
 Creating Pipeline using Data Factory to orchestrate everything that we have done so far in this end to end project.
-
-Go into your workspace
-Click on your Data Factory Pipeline
-Orchestration:
-Drag and position the "Copy Data" to the left on the canvas.
-Click on "Notebook" at the top right.
-Connect the "Copy Data" to the "Notebook" using "On Success"
-"General" tab --> "Name (Input: "Data Transformation")
-"Settings" tab --> "workspace"(from the drop-down, choose the name of your workspace)--> Then, "Notebook" (from the drop-down, choose the Notebook you used for data transformation)
-Again.
-Click on "Notebook" at the top right.
-Connect the "Data Transformation" Notebook to the new "Notebook" using "On Success"
-"General" tab --> "Name (Input: "Sentiment Analysis")
-"Settings" tab --> "workspace"(from the drop-down, choose the name of your workspace)--> Then, "Notebook" (from the drop-down, choose the Notebook you used for Sentiment Analysis)
-Then, click save on your top-left.
+- Go into your workspace
+- Click on your Data Factory Pipeline
+##### Orchestration:
+- Drag and position the "Copy Data" to the left on the canvas.
+- Click on "Notebook" at the top right.
+- Connect the "Copy Data" to the Notebook, say  "Crypto Data" using "On Success"
+- "General" tab --> "Name (Input: "Data Transformation")
+- "Settings" tab --> "workspace"(from the drop-down, choose the name of your workspace)--> Then, "Notebook" (from the drop-down, choose the Notebook you used for data transformation)
+#### Again.
+- Click on "Notebook" at the top right.
+- Connect the "Data Transformation" to the new Notebook say "cleaned Crypto Data" using "On Success"
+- "General" tab --> "Name (Input: "Cleaned Crypto Data")
+- "Settings" tab --> "workspace"(from the drop-down, choose the name of your workspace)--> Then, "Notebook" (from the drop-down, choose the Notebook you used for Sentiment Analysis)
+Then, click save on your top-left, to save your pipeline
 Then, run your pipeline.
 ##### Screen shot.
-
 
 ![Screenshot 2024-09-20 181104](https://github.com/user-attachments/assets/f30192d4-2052-4a13-b60f-635640dbf175)
 
