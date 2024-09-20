@@ -966,7 +966,9 @@ Page 1:
 - Finally, remember to save your work.
 *** Images
 
-2b. Use the "Line Graph" visuals to visualize the 4 days "Price Moving Average" measure created and "Price" . On the  Y-axis field, drag and drop "4 Days Moving Average" measure and "Price" metric While on the X-axis field, drag and drop the "date" column.
+- 2b. Use the "Line Graph" visuals to visualize the 4 days "Price Moving Average" measure we created and "Price" .
+- On the  Y-axis field, drag and drop "4 Days Moving Average" measure and "Price" metric While on the X-axis field, drag and drop the "date" column.
+
 ##### Page 3: Dynamic Crypto table showing key metrics *******Image
 3. Create a Crypto_Currency table showing tthe top 12 cryptocurrencies and their corresponding statistics at a particular time daily.Click on the the "table" visual to the top right, under visualization pane, 
    you have an empty table in your canvas.
