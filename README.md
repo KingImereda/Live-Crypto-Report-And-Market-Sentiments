@@ -1058,6 +1058,26 @@ Go to Data Factory
 - "Go to Monitoring hub" at the bottom-left
 - Then, click "Go to Monitoring hub"
 
+## Data Activator Email Alert In Power BI
+- Go to your workspace in Fabric.
+- Power BI report
+##### To configure your alert, you have to pick a visual upon which you want to configure the alert. In our case , we are picking the "Negative Sentiment %" card
+- Click on the "Negative Sentiment %" card, under it click on three dots "..."
+- From the drop-down, choose "set alert"
+- On the right side, under "set an alert" --> "Visual" drop-down, pick the visual you want to set an alert on, say (Card 1)
+- Under "Condition" --> 
+   - "Measure": from the drop-down, pick the card you want to create alert on, say (Negative Sentiment %)
+   - "Operators": from the drop-down, pick the 'operator' you want for your alert say (Become greater than)
+   - "Value", Specify the numerical value you are using as you condition, say (00.00)
+- Action --> (Outlook email or Teams message)pick one that is suitable to you, say (Outlook email)
+- Click "show save option"
+- Under "My Workspace" select your workspace name
+- Under "item" click on "Create a new reflex item"
+- Under "Item name" input your item name, say (Negative Sentiment Item)
+- Then, click "Create" to create the alert.
+- Then, click on "Open Data Activator" -- To find all the information regarding the alert created
+
+
 
 
 
