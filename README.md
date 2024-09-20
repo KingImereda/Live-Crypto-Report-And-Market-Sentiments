@@ -1022,10 +1022,42 @@ The pipeline will be automatically triggered at 6: pm in the evening every day, 
 - "Go to Monitoring hub" at the bottom-left
 - Then, click "Go to Monitoring hub"
 
+## Pipeline 2: Orchestration For Crypto News & Opinions Using Data Factory
+Creating Pipeline using Data Factory to orchestrate everything that we have done so far in this end to end project.
+- Go into your workspace
+- Click on your Data Factory Pipeline
+##### Orchestration:
+- Drag and position the "Copy Data" to the left on the canvas.
+- Click on "Notebook" at the top right.
+- Connect the "Copy Data" to the Notebook, say  "Crypto News" using "On Success"
+- "General" tab --> "Name (Input: "Data Transformation")
+- "Settings" tab --> "workspace"(from the drop-down, choose the name of your workspace)--> Then, "Notebook" (from the drop-down, choose the Notebook you used for data transformation)
+#### Again.
+- Click on "Notebook" at the top right.
+- Connect the "Data Transformation" to the new Notebook say "Crypto News Sentiments" using "On Success"
+- "General" tab --> "Name (Input: "Crypto News Sentiments")
+- "Settings" tab --> "workspace"(from the drop-down, choose the name of your workspace)--> Then, "Notebook" (from the drop-down, choose the Notebook you used for Sentiment Analysis)
+Then, click save on your top-left, to save your pipeline
+Then, run your pipeline.
+##### Screen shot.
 
+![Screenshot 2024-09-20 185508](https://github.com/user-attachments/assets/95cef349-5991-4071-9b1d-a13860255271)
 
-
-
+Schedule Pipeline To Run Once Daily AT 7: 00 PM GMT + 1
+The pipeline will be automatically triggered at 7: pm in the evening every day, ingesting the latest news and opiniond on crypto  currencies  and automatically updates the Power BI report with the latest sentiments on crypto currencies.
+##### Steps:
+- In Data Factory canvas, click on "Schedule" button at the top.
+- Check the radio button "ON" under Schedule Run.
+- From "Repeat" drop-down, Pick "Daily" --To choose pipeline run frequency option.
+- Under "Time", pick the time you want to schedule the pipeline to run, say 6:00 PM GMT +1
+- Select the start date-time and end date-time of your schedule pipeline run from the "Start Date and Time" and "End Date and Time" calendar.
+- "Time Zone" .You have the option of selecting your time zone, but the default is the time zone you are based on, so it's advisable to go with the default time zone.
+-  Then, click "Apply"
+##### Pipeline Monitor.
+-Go to Data Factory
+- Click "View Run History" tab at the top.--You will see recent run of your pipeline. Better still you can proceed to
+- "Go to Monitoring hub" at the bottom-left
+- Then, click "Go to Monitoring hub"
 
 
 
