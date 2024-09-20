@@ -1006,7 +1006,21 @@ Then, run your pipeline.
 
 ![Screenshot 2024-09-20 181104](https://github.com/user-attachments/assets/f30192d4-2052-4a13-b60f-635640dbf175)
 
-
+Schedule Pipeline To Run Once Daily AT 6: 00 PM GMT + 1
+The pipeline will be automatically triggered at 6: pm in the evening every day, ingesting the latest data on 12 selected crypto  currencies  and automatically updates the Power BI report with the latest data on crypto currencies.
+##### Steps:
+- In Data Factory canvas, click on "Schedule" button at the top.
+- Check the radio button "ON" under Schedule Run.
+- From "Repeat" drop-down, Pick "Daily" --To choose pipeline run frequency option.
+- Under "Time", pick the time you want to schedule the pipeline to run, say 6:00 PM GMT +1
+- Select the start date-time and end date-time of your schedule pipeline run from the "Start Date and Time" and "End Date and Time" calendar.
+- "Time Zone" .You have the option of selecting your time zone, but the default is the time zone you are based on, so it's advisable to go with the default time zone.
+-  Then, click "Apply"
+##### Pipeline Monitor.
+-Go to Data Factory
+- Click "View Run History" tab at the top.--You will see recent run of your pipeline. Better still you can proceed to
+- "Go to Monitoring hub" at the bottom-left
+- Then, click "Go to Monitoring hub"
 
 
 
