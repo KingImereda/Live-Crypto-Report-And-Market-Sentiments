@@ -950,6 +950,29 @@ Total Market Cap Dominance = DIVIDE(
 ```
 Then, close the Semantic Model.
 
+- Then, go back to your dashboard to build a live report.Using the "Card" visual. Create three "Card" visuals for each of the sentiment measures created,
+1. Create a   Crypto_News table in the report by clicking on the the "table" visual to the top right, under visualization pane, you have an empty table in your canvas.
+- Add required fields. First, expand the table by clicking on your table name, say"sentiments" under (Data) Title , to your top right. This reveals in your table as well as the newly created measures for the 
+ "sentiment" table.
+- Select the following fields/columns [Title, Provider, Url, Snippet, Date] to populate your table.
+- Next, Create a Date Slicer by using the slicer visual under "visualisation Pane"
+- Format the "Date" slicer to "drop-down" for capturing each date, to make your report organise by date.
+- Filter the "News" Table and measures ("Postive sentiment", "Negative Sentiment", "Neutral Sentiment") cards by date, such that the dashboard by default will show the report by current date,with the option to 
+  filter the report by previous date.
+- Continue formatting your dashboard as deep as your creativity permits.
+- Finally, remember to save your work.
+*** Images
+
+2. Use the "Line Graph" visuals to visualize the 4 days "Price Moving Average" measure created and "Price" . On the  Y-axis field, drag and drop "4 Days Moving Average" measure and "Price" metric While on the X-axis field, drag and drop the "date" column.
+
+3. Create a Crypto_Currency table showing tthe top 12 cryptocurrencies and their corresponding statistics at a particular time daily.Click on the the "table" visual to the top right, under visualization pane, you have an empty table in your canvas.
+- Add required fields. First, expand the table by clicking on your table name, say"tbl_cleaned_data" under (Data) Title , to your top right. This reveals in your table as well as the newly created measures for the "Crypto" table.
+- Select the following fields/columns [Title, Provider, Url, Snippet, Date] to populate your table.
+- Next, Create a Date Slicer by using the slicer visual under "visualisation Pane"
+- Format the "Date" slicer to "drop-down" for capturing each date, to make your report organise by date.
+- Filter the "News" Table and measures ("Postive sentiment", "Negative Sentiment", "Neutral Sentiment") cards by date, such that the dashboard by default will show the report by current date,with the option to 
+  filter the report by previous date.
+
 
 
 
