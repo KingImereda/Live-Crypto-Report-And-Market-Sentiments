@@ -831,6 +831,133 @@ Steps:
 ![Screenshot 2024-09-19 221011](https://github.com/user-attachments/assets/a5c2a8b9-489c-4ea1-9e3f-212f3f584d33)
 
 
+##### Using Semantic Model To Build Our Report
+
+Move back to your workspace.
+- In your workspace, you will see the drop-down of all the resources you have created in your workspace.
+- select the Semantic Model.
+- At the top, under "Discover Business Insights", click on the drop-down arrow on "Explore this Data"--> choose "Auto Create Report" option. Power BI automatically generate a report base     on data in Your Semantic Model
+##### Let's further build on the  Auto Created Report by drilling down on the data in your Semantic Model to build a dynamic report.
+- Click on "Edit" tab at the top. Then, continue.
+- At the bottom of the page, click on "+" to create a blank new page for our visuals.
+- At the top of the New Page, click on "Open Data Model"
+Let us create new Measures for  our Report using DAX to further analyze the Crypto Market. The DAX you would be creating shall be on "Sentiments Table" ("Positive sentiments", "Negative Sentiments" and "Neutral Sentiments") and Crypto Metric Table ("4 Days Moving Average", "Price Change 24h", "Total Market Cap" of all the 12 selected Cryptocurrencies and "Total Market Dominance" of each crypto currency, i.e. market share of each currency .
+
+### Data Analysis Expression on Sentiments Table.
+##### Steps:
+- In your Semantic Model window, right click on the three dots "..." on your sentiments table.
+- From the dropdown, click on "New Measure"
+- Then, input the following DAX script for each of the measures and save
+Negative Sentiment:
+```
+Negative Sentiment % = 
+IF (
+    COUNTROWS (FILTER ( 'sentiments', 'sentiments'[sentiment] = "negative" )) > 0,
+    DIVIDE (
+        CALCULATE (
+            COUNTROWS(FILTER ( 'sentiments', 'sentiments'[sentiment] = "negative" ))
+        ),
+        COUNTROWS('sentiments')
+    )*100,
+    0
+)
+
+```
+Positive Sentiment:
+
+```
+Positive Sentiment % = 
+IF (
+    COUNTROWS (FILTER ( 'sentiments', 'sentiments'[sentiment] = "positive" )) > 0,
+    DIVIDE (
+        CALCULATE (
+            COUNTROWS(FILTER ( 'sentiments', 'sentiments'[sentiment] = "positive" ))
+        ),
+        COUNTROWS('sentiments')
+    )*100,
+    0
+)
+
+```
+Neutral Sentiments:
+
+```
+Neutral Sentiment % = 
+IF (
+    COUNTROWS (FILTER ( 'sentiments', 'sentiments'[sentiment] = "neutral" )) > 0,
+    DIVIDE (
+        CALCULATE (
+            COUNTROWS(FILTER ( 'sentiments', 'sentiments'[sentiment] = "neutral" ))
+        ),
+        COUNTROWS('sentiments')
+    )*100,
+    0
+)
+
+```
+
+### Data Analysis Expression on Sentiments Table.
+##### Steps:
+- In your Semantic Model window, right click on the three dots "..." on your Crypto metric table. i.e. "tbl_cleaned_data"
+- From the dropdown, click on "New Measure"
+- Then, input the following DAX script for each of the measures and save
+
+4 Days Price Moving Average:
+
+```
+4DayMovingAverage = 
+CALCULATE(
+    AVERAGE([Price]),
+    DATESINPERIOD('tbl_cleaned_data'[Date], LASTDATE('tbl_cleaned_data'[Date]), -3, DAY)
+)
+
+``` 
+
+Price Change_24h:
+
+```
+Price Change 24h = 
+VAR PreviousPrice = 
+    CALCULATE(
+        MAX([Price]),
+        DATEADD('tbl_cleaned_data'[Date], -1, DAY)
+    )
+RETURN
+    DIVIDE(
+        MAX([Price]) - PreviousPrice,
+        PreviousPrice,
+        BLANK()
+    ) * 100
+
+```
+
+Total Market Cap :
+
+```
+Total Market Cap = SUM([Market_Cap])
+
+```
+
+Total Market Cap Dominance:
+
+```
+Total Market Cap Dominance = DIVIDE(
+    [Total Market Cap],
+    CALCULATE(SUM([Market_Cap]), ALL('tbl_cleaned_data')),
+    0
+) * 100
+
+```
+Then, close the Semantic Model.
+
+
+
+
+
+
+
+
+
 
 
 
