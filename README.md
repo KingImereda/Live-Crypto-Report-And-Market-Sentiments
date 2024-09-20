@@ -30,7 +30,7 @@ The proposed solution involves the following steps:
 - Data Ingestion: Data Factory in Microsoft Fabric
 - Data Transformation: Synapse Data Engineer in Microsoft Fabric
 - Sentiment Analysis: Synapse Data Science in Microsoft Fabric
-- Dashboarding: Power BI in Microsoft Fabric
+- Live Crypto Currency Report: Semantic Model & Power BI in Microsoft Fabric
 
 Project Timeline
 Phase 1: Data Extraction and Transformation: 2 weeks
@@ -146,7 +146,7 @@ In the data ingestion stage, we will be creating two different Data Factory to e
 1.Daily statistics of to top crypto currencies and 
 2. Latest News and opinions on crypto currencies.
 
-#### Crypto Data
+#### Data Ingestion For Crypto Data
 Using the Data Factory component of Fabric.
 - On the bottom left, click on the Power BI icon.
 - From the list of icons, click the "Data Factory" icon to move into Data Factory environment
@@ -180,7 +180,7 @@ Data is Successfully copy from CoinMarketCap End point source to Lakehouse DB
 ##### Screen Shot
 ![Screenshot 2024-09-15 204810](https://github.com/user-attachments/assets/2e4c9794-df48-49d4-a699-21c219170e53)
 
-#### Crypto News & Opinins
+#### Data Ingestion For Crypto News & Opinions
 Using the Data Factory component of Fabric.
 - On the bottom left, click on the Power BI icon.
 - From the list of icons, click the "Data Factory" icon to move into Data Factory environment
@@ -218,7 +218,7 @@ Data is Successfully copy from Google CSE end point to Lakehouse DB
 ## DATA TRANSFORMAION
 In the data transformation phase, we will be processing our data using two different Spark Notebooks to transform extracted data from CoinMarketCap API and Google CSE API respectively.
 
-#### Crypto Data
+#### Data Transformation For Crypto Data
 This is done using Synapse Data Engineering Component of Fabric.
 - On the bottom left, click on the Power BI icon or whatever icon present there.
 - From the list of icons, choose Synapse Data Engineering. 
@@ -319,7 +319,7 @@ renamed_df.write.format("delta") \
 ```
 
 
-#### Crypto News & Opinions
+#### Data Transformation For Crypto News & Opinions
 ```
 df = spark.read.option("multiline", "true").json("Files/crypto1-news-opinion.json")
 # df now is a Spark DataFrame containing JSON data from "Files/crypto1-news-opinion.json".
@@ -534,7 +534,7 @@ display(df_cleaned_final)
 
 ![Screenshot 2024-09-17 193056](https://github.com/user-attachments/assets/899a8068-8b3c-4b3e-8b5e-649ad21c904d)
 
-#### Handling Incrementa Loading
+#### Handling Incrementa Loading For Crypto News & Opinions
 
 To capture new, updated and unchanged News items and opinions on the US election , we will be employing incremental loading to our dataset using Slowly Changing Dimension Type_1. i.e SCD1. SCD Type1 is a form of incremental load technique in which new records are captured and updated records are overwritten and old records dropped and unchanged records remained unchanged.In SCD1 the table will always hold the present values and not the previous values. It does not keep historical records rather present records. This is good for sentiment analysis, where focus is on present perspectives and not comparison between historical and present perspectives.
 
@@ -591,7 +591,7 @@ except Exception as e:
 
 ### Crypto Data
 
-##### DATA CLEANING.
+##### DATA CLEANING (Continuation of Transformation of Crypto Data).
 This is done using Synapse Data Engineering Component of Fabric.
 - On the bottom left, click on the Power BI icon or whatever icon present there.
 - From the list of icons, choose Synapse Data Engineering. 
@@ -813,9 +813,9 @@ except Exception as e:
     print(f"An error occurred: {str(e)}")
 
 ```
+## Power BI Report
 
 ### Semantic Model
-
 In order to utilize our data in creating  Crypto report in Power BI, we need to create a Semantic Model. Semantic Model is an advance Entity Relation Diagram of Business intelligence which leverage on the relationship between the Crypto Data table and Crypto Sentiment Table. In building the Semantic Model, we will be using the crypto data table and the crypto  sentiments table.
 
 Steps:
@@ -831,7 +831,7 @@ Steps:
 ![Screenshot 2024-09-19 221011](https://github.com/user-attachments/assets/a5c2a8b9-489c-4ea1-9e3f-212f3f584d33)
 
 
-##### Using Semantic Model To Build Our Report
+##### Using Semantic Model To Build Power BI Report
 
 Move back to your workspace.
 - In your workspace, you will see the drop-down of all the resources you have created in your workspace.
