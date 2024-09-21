@@ -53,6 +53,7 @@ The proposed cryptocurrency performance and sentiment analysis dashboard offers 
 
 
 
+
 ## Environment setup
 ##### There are mainly two ways to extract data from a website or webpage. One, using the API of the website . Two, through web scraping by accessing the HTML of the webpage to extract data. In this project we shall be using APIs to extract data from two different sources.
 Configuring Your Data Sources
