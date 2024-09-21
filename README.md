@@ -31,19 +31,10 @@ The proposed solution involves the following steps:
 - Data Transformation: Synapse Data Engineer in Microsoft Fabric
 - Sentiment Analysis: Synapse Data Science in Microsoft Fabric
 - Live Crypto Currency Report: Semantic Model & Power BI in Microsoft Fabric
-
-Project Timeline
-Phase 1: Data Extraction and Transformation: 2 weeks
-Phase 2: Sentiment Analysis: 3 weeks
-Phase 3: Dashboard Development: 4 weeks
-Cost Estimate
-[Provide a detailed cost estimate based on resource requirements, cloud platform costs, and licensing fees.]
-
-Return on Investment (ROI)
-[Quantify the potential benefits of the dashboard, such as increased investment returns, reduced risk, and improved decision-making. Calculate the ROI based on the cost estimate and expected benefits.]
+- Email Alert: Data Activator in Power BI
 
 # Conclusion
-The proposed cryptocurrency performance and sentiment analysis dashboard offers a valuable tool for stakeholders seeking to navigate the complex and dynamic cryptocurrency market. By providing real-time insights and supporting informed decision-making, this dashboard can contribute to significant business value.
+The live cryptocurrency performance and sentiment analysis report offers a valuable tool for analyst, would be investors and other stakeholders seeking to navigate the complex and dynamic cryptocurrency market. By providing real-time insights that support informed decision-making, this report is leverage has a significant investment value.
 
 ## SolutionArchitecture
 
@@ -70,10 +61,8 @@ The proposed cryptocurrency performance and sentiment analysis dashboard offers 
 - ##### Data Activator(Microsoft Fabric)
 
 
-
-
 ## Environment setup
-##### There are mainly two ways to extract data from a website or webpage. One, using the API of the website . Two, through web scraping by accessing the HTML of the webpage to extract data. In this project we shall be using APIs to extract data from two different sources.
+##### There are mainly two ways to extract data from a website or webpage. One, using the API of the website . Two, through web scraping by accessing the HTML of the webpage to extract data. In this project we will be using APIs to extract data from two different sources.
 Configuring Your Data Sources
 
 ### 1.Create a free CoinMarketCap API 
@@ -163,7 +152,7 @@ Switch from Power BI environment to Data Engineering environment
 - From the dropdown, "Name Lakehouse"- <Google_Custom_SearchDB>
 - Click "create"
 
-## DATA INGESTION
+## Data Ingestion
 In the data ingestion stage, we will be creating two different Data Factory to extracting  two separate set of data from different sources using different APIs,  The data are 
 1.Daily statistics of to top crypto currencies and 
 2. Latest News and opinions on crypto currencies.
@@ -237,7 +226,7 @@ Data is Successfully copy from Google CSE end point to Lakehouse DB
 
 
 
-## DATA TRANSFORMAION
+## Data Transformation
 In the data transformation phase, we will be processing our data using two different Spark Notebooks to transform extracted data from CoinMarketCap API and Google CSE API respectively.
 
 #### Data Transformation For Crypto Data
@@ -611,7 +600,7 @@ except Exception as e:
 
 ```
 
-### Crypto Data
+#### Crypto Data
 
 ##### DATA CLEANING (Continuation of Transformation of Crypto Data).
 This is done using Synapse Data Engineering Component of Fabric.
@@ -693,7 +682,7 @@ df_crypto_data_cleaned.write.format("delta") \
 
 ```
 
-##### SENTIMENT ANALYSIS USING SYNAPSE MACHINE LEARNING(Incremental Loading).
+## Sentiment Analysis Using Pretrained Machine Learning Model
 This is done using Synapse Data Science Component of Fabric.
 - On the bottom left, click on the Power BI icon or whatever icon present there.
 - From the list of icons, choose Synapse Data Science option. 
@@ -1006,7 +995,8 @@ Page 1:
 - 4c. Create a "24h Change in Price " chart of the top 12 Crypto currencies using waterfall chart.
 
 
-## Pipeline 1: Orchestration For Crypto Data Using Data Factory
+## Pipeline 1 
+#### Pipeline Orchestration For Crypto Data Using Data Factory
 Creating Pipeline using Data Factory to orchestrate everything that we have done so far in this end to end project.
 - Go into your workspace
 - Click on your Data Factory Pipeline
@@ -1043,7 +1033,8 @@ Go to Data Factory
 - "Go to Monitoring hub" at the bottom-left
 - Then, click "Go to Monitoring hub"
 
-## Pipeline 2: Orchestration For Crypto News & Opinions Using Data Factory
+## Pipeline 2 
+#### Pipeline Orchestration For Crypto News & Opinions Using Data Factory
 Creating Pipeline using Data Factory to orchestrate everything that we have done so far in this end to end project.
 - Go into your workspace
 - Click on your Data Factory Pipeline
