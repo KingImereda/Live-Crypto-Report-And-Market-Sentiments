@@ -50,8 +50,6 @@ The proposed cryptocurrency performance and sentiment analysis dashboard offers 
 ![Crypto Project Solution Architecture drawio](https://github.com/user-attachments/assets/d9e2ab89-4a48-49a6-8d1e-25cec9956867)
 
 ## Tools Used
-
-## Tools Used
 - ##### Pyspark.
 - ##### SQL.
 - ##### Data Factory(Microsoft Fabric)-For Data Injestion.
