@@ -47,6 +47,9 @@ The proposed cryptocurrency performance and sentiment analysis dashboard offers 
 
 ## SolutionArchitecture
 
+
+![Crypto Project Solution Architecture drawio](https://github.com/user-attachments/assets/d9e2ab89-4a48-49a6-8d1e-25cec9956867)
+
 ## Tools Used
 
 
