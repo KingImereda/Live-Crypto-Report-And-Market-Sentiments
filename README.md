@@ -51,6 +51,26 @@ The proposed cryptocurrency performance and sentiment analysis dashboard offers 
 
 ## Tools Used
 
+## Tools Used
+- ##### Pyspark.
+- ##### SQL.
+- ##### Data Factory(Microsoft Fabric)-For Data Injestion.
+  - Google Custom Search Engine JSON API- Source.
+  - Coin Market Cap API
+  - Lakehouse Database- For data storage- Target.
+  - Schedule and Monitor Pipeline.
+- ##### Synapse Data Engineering(Microsoft fabric).
+  - Spark Notebook-- For data transformation.
+  - Lakehouse Database.
+- ##### Synapse Data Science(Microsoft Fabric).
+  - Spark Notebook-- For pre-trained Machine Learning Model.
+  - Lakehouse Database.
+- ##### Power BI(Microsoft Fabric).
+  - Semantic Model.
+  - Data Analysis Expression (DAX)
+  - Visualizations.
+- ##### Data Activator(Microsoft Fabric)
+
 
 
 
