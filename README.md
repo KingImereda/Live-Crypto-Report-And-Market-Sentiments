@@ -15,7 +15,7 @@ The proposed solution involves the following steps:
 - Dashboard Development:Create a Semantic Model(Entity Relation Diagram) for the Crypto Data Table and Crpto News Table In Lakehouse, this serves as the bases of 
   our dynamic report in Power BI which visualizes key performance indicators (KPIs) for each cryptocurrency, including price charts, 
   trading volume trends, and sentiment analysis results.
-- Data Activator: To configure  email alerts in Power BI visuals to predict market sentiments shaped by latest news, opinions and releases in the digital asset 
+- Data Activator: To configure  email alerts in Power BI visuals for negative market sentiments shaped by latest news, opinions and releases in the digital asset 
   space.
 - Orchestrate the whole process as an End-to-End Pipeline using Microsoft Fabric- Data Factory.
 
@@ -47,10 +47,10 @@ The proposed cryptocurrency performance and sentiment analysis dashboard offers 
 
 ## SolutionArchitecture
 
-
 ![Crypto Project Solution Architecture drawio](https://github.com/user-attachments/assets/d9e2ab89-4a48-49a6-8d1e-25cec9956867)
 
 ## Tools Used
+
 
 
 ## Environment setup
