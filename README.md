@@ -1,5 +1,23 @@
 # Live Crypto Currency Performance and Sentiment Analysis Report
 ## Table of Content
+- [Business Case](#business-case)
+- [Problem Statement](#problem-statement)
+- [Proposed Solution](#proposed-solution)
+- [Technical Approach](#technical-approach)
+- [Conclusion](#conclusion)
+- [Solution Architecture](#solution-architecture)
+- [Tools Used](#tools-used)
+- [Environment Setup](#environment-setup)
+- [Data Ingestion](#data-ingestion)
+- [Data Transformation](#data-transformation)
+- [Sentiment Analysis Using Pretrained Machine Learning Model](#sentiment-analysis-using-pretrained-machine-learning-model)
+- [Power BI Report](#power-bi-report)
+  - [Semantic Model](#semantic-model)
+- [Pipeline 1](#pipeline-1)
+  - [Pipeline Orchestration For Crypto Data Using Data Factory](#pipeline-orchestration-for-crypto-data-using-data-factory)
+- [Pipeline 2](#pipeline-2)
+  - [Pipeline Orchestration For Crypto News and Opinions Using Data Factory](#pipeline-orchestration-for-crypto-news-and-opinions-using-data-factory)
+- [Email Alert Using Data Activator](#email-alert-using-data-activator)
 # Business Case
 This business case proposes the development of a real-time dashboard that provides comprehensive insights into the performance and sentiment surrounding the top  cryptocurrencies. By leveraging advanced data analytics tools and APIs, this dashboard will empower stakeholders with critical information to make informed decisions in the volatile cryptocurrency market.
 
@@ -37,7 +55,7 @@ The proposed solution involves the following steps:
 # Conclusion
 The live cryptocurrency performance and sentiment analysis report offers a valuable tool for analyst, would be investors and other stakeholders seeking to navigate the complex and dynamic cryptocurrency market. By providing real-time insights that support informed decision-making, this report is leverage has a significant investment value.
 
-## SolutionArchitecture
+## Solution Architecture
 
 ![Crypto Project Solution Architecture drawio](https://github.com/user-attachments/assets/d9e2ab89-4a48-49a6-8d1e-25cec9956867)
 
@@ -1035,7 +1053,7 @@ Go to Data Factory
 - Then, click "Go to Monitoring hub"
 
 ## Pipeline 2 
-#### Pipeline Orchestration For Crypto News & Opinions Using Data Factory
+#### Pipeline Orchestration For Crypto News and Opinions Using Data Factory
 Creating Pipeline using Data Factory to orchestrate everything that we have done so far in this end to end project.
 - Go into your workspace
 - Click on your Data Factory Pipeline
@@ -1072,7 +1090,7 @@ Go to Data Factory
 - "Go to Monitoring hub" at the bottom-left
 - Then, click "Go to Monitoring hub"
 
-## Data Activator Email Alert In Power BI
+## Email Alert Using Data Activator
 - Go to your workspace in Fabric.
 - Power BI report
 ##### To configure your alert, you have to pick a visual upon which you want to configure the alert. In our case , we are picking the "Negative Sentiment %" card
