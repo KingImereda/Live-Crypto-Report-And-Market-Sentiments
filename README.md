@@ -1116,7 +1116,8 @@ Go to Data Factory
 - Under "Item name" input your item name, say (Negative Sentiment Item)
 - Then, click "Create" to create the alert.
 - Then, click on "Open Data Activator" -- To find all the information regarding the alert created
-
+##### Screen Shot
+![Screenshot 2024-09-22 133516](https://github.com/user-attachments/assets/da9a0607-93de-419e-a191-137528363cb2)
 
 
 
