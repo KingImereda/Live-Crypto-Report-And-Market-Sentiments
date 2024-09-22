@@ -2,7 +2,7 @@
 ## Table of Content
 - [Business Case](#business-case)
 - [Problem Statement](#problem-statement)
-- [Proposed Solution](#proposed-solution)
+- [Solution](#solution)
 - [Technical Approach](#technical-approach)
 - [Summary](#summary)
 - [Solution Architecture](#solution-architecture)
@@ -24,7 +24,7 @@ This business case proposes the development of a real-time dashboard that provid
 ## Problem Statement
 The cryptocurrency market is characterized by rapid price fluctuations, evolving regulatory landscapes, and diverse investor sentiment. Lack of access to real-time, comprehensive data can lead to suboptimal investment decisions and missed opportunities.
 
-## Proposed Solution
+## Solution
 The proposed solution involves the following steps:
 - Data Extraction: Utilize the CoinMarketCap API to extract live data on the top cryptocurrencies, including market capitalization, trading volume, price, and 
   other relevant metrics. Also wewill leverage Google Custom Search Engine API to extract latest information, news,opinions and insightson the crypto market.
