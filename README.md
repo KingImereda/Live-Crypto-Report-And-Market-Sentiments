@@ -1,4 +1,4 @@
-# Live Crypto Currency Performance and Sentiment Analysis Report
+# Live Crypto Report And Market Sentiments.
 ## Table of Content
 - [Business Case](#business-case)
 - [Problem Statement](#problem-statement)
