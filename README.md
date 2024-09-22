@@ -873,7 +873,7 @@ Move back to your workspace.
 - At the top of the New Page, click on "Open Data Model"
 Let us create new Measures for  our Report using DAX to further analyze the Crypto Market. The DAX you would be creating shall be on "Sentiments Table" ("Positive sentiments", "Negative Sentiments" and "Neutral Sentiments") and Crypto Metric Table ("4 Days Moving Average", "Price Change 24h", "Total Market Cap" of all the 12 selected Cryptocurrencies and "Total Market Dominance" of each crypto currency, i.e. market share of each currency .
 
-### Data Analysis Expression on Sentiments Table.
+### Data Analysis Expression on Crypto News Sentiments.
 ##### Steps:
 - In your Semantic Model window, right click on the three dots "..." on your sentiments table.
 - From the dropdown, click on "New Measure"
@@ -926,7 +926,7 @@ IF (
 
 ```
 
-### Data Analysis Expression on Sentiments Table.
+### Data Analysis Expression on Crypto Data .
 ##### Steps:
 - In your Semantic Model window, right click on the three dots "..." on your Crypto metric table. i.e. "tbl_cleaned_data"
 - From the dropdown, click on "New Measure"
@@ -979,11 +979,12 @@ Total Market Cap Dominance = DIVIDE(
 
 ```
 Then, close the Semantic Model.
-
+#### PS. This is a live report, but due to Microsoft Power BI Pro license limitations, it's not publicly accessible. However, you can find sample screenshots of each page below.
 - Then, go back to your dashboard to build a live report.Using the "Card" visual. Create three "Card" visuals for each of the sentiment measures created.
-Page 1:
-***** Image Power BI Automatic Created Report.
-##### Page 2:***** Image
+##### Page 1:
+##### Screen Shot
+![Screenshot 2024-09-22 131430](https://github.com/user-attachments/assets/4e6ee573-e716-4500-9516-1ea3fe1a72b4)
+
 2a. Create a   Crypto_News table in the report by clicking on the the "table" visual to the top right, under visualization pane, you have an empty table in your canvas.
 - Add required fields. First, expand the table by clicking on your table name, say"sentiments" under (Data) Title , to your top right. This reveals in your table as well as the newly created measures for the 
  "sentiment" table.
@@ -998,8 +999,10 @@ Page 1:
 
 - 2b. Use the "Line Graph" visuals to visualize the 4 days "Price Moving Average" measure we created and "Price" .
 - On the  Y-axis field, drag and drop "4 Days Moving Average" measure and "Price" metric While on the X-axis field, drag and drop the "date" column.
+##### Page 2:
+##### Screen Shot
+![Screenshot 2024-09-22 131803](https://github.com/user-attachments/assets/ffc4bb42-455a-4fef-8d21-da011ff1dcd0)
 
-##### Page 3: Dynamic Crypto table showing key metrics *******Image
 3. Create a Crypto_Currency table showing tthe top 12 cryptocurrencies and their corresponding statistics at a particular time daily.Click on the the "table" visual to the top right, under visualization pane, 
    you have an empty table in your canvas.
 - Add required fields. First, expand the table by clicking on your table name, say"tbl_cleaned_data" under (Data) Title , to your top right. This reveals in your table as well as the newly created measures for 
@@ -1008,11 +1011,16 @@ Page 1:
 - Next, Create a Date Slicer by using the slicer visual under "visualisation Pane"
 - Format the "Date" slicer to "drop-down" for capturing each date, to make your report organise by date.
 - Filter the "Crypto" Table by date, such that the dashboard by default will show the report by current date,with the option to filter the report by previous date.
-##### Page 4.*****Image
+##### Page 3:
+##### Screen Shot
+![Screenshot 2024-09-22 132813](https://github.com/user-attachments/assets/ee1757b9-1b06-4dbe-b663-413ae0d7f08c)
+
 - 4a. Create a "Total Market Cap Dominance By Currency by Currency" Using the Treemap Chart visual to explain the market share of each crypto currency in a pool o 12  crypto currencies.
 - 4b. Create a "Total Market Capitalization " of the 12 top Crypto Currencies, using the Donot Chart.
 - 4c. Create a "24h Change in Price " chart of the top 12 Crypto currencies using waterfall chart.
-
+##### Page 4:
+##### Screen Shot
+![Screenshot 2024-09-22 133035](https://github.com/user-attachments/assets/8d85fb1c-4ace-459a-9ea8-bc1285f5dbbe)
 
 ## Pipeline 1 
 #### Pipeline Orchestration For Crypto Data Using Data Factory
