@@ -4,7 +4,7 @@
 - [Problem Statement](#problem-statement)
 - [Proposed Solution](#proposed-solution)
 - [Technical Approach](#technical-approach)
-- [Conclusion](#conclusion)
+- [Summary](#summary)
 - [Solution Architecture](#solution-architecture)
 - [Tools Used](#tools-used)
 - [Environment Setup](#environment-setup)
@@ -52,7 +52,7 @@ The proposed solution involves the following steps:
 - Live Crypto Currency Report: Semantic Model & Power BI in Microsoft Fabric
 - Email Alert: Data Activator in Power BI
 
-# Conclusion
+# Summary
 The live cryptocurrency performance and sentiment analysis report offers a valuable tool for analyst, would be investors and other stakeholders seeking to navigate the complex and dynamic cryptocurrency market. By providing real-time insights that support informed decision-making, this report is leverage has a significant investment value.
 
 ## Solution Architecture
