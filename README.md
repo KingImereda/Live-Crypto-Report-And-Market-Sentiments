@@ -868,7 +868,7 @@ Move back to your workspace.
 - Click on "Edit" tab at the top. Then, continue.
 - At the bottom of the page, click on "+" to create a blank new page for our visuals.
 - At the top of the New Page, click on "Open Data Model"
-Let us create new Measures for  our Report using DAX to further analyze the Crypto Market. The DAX you would be creating shall be on "Sentiments Table" ("Positive sentiments", "Negative Sentiments" and "Neutral Sentiments") and Crypto Metric Table ("4 Days Moving Average", "Price Change 24h", "Total Market Cap" of all the 12 selected Cryptocurrencies and "Total Market Dominance" of each crypto currency, i.e. market share of each currency .
+Let us create new Measures for  our Report using DAX to further analyze the Crypto Market. The DAX you would be creating shall be on "Sentiments Table" ("Positive sentiments", "Negative Sentiments" and "Neutral Sentiments") and Crypto Metric Table ("3 Days Moving Average", "Price Change 24h", "Total Market Cap" of all the 12 selected Cryptocurrencies and "Total Market Dominance" of each crypto currency, i.e. market share of each currency .
 
 ### Data Analysis Expression on Crypto News Sentiments.
 ##### Steps:
