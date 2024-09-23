@@ -19,7 +19,7 @@
   - [Pipeline Orchestration For Crypto News and Opinions Using Data Factory](#pipeline-orchestration-for-crypto-news-and-opinions-using-data-factory)
 - [Email Alert Using Data Activator](#email-alert-using-data-activator)
 # Business Case
-This business case proposes the development of a real-time report that provides comprehensive insights into the performance and sentiment surrounding the top  cryptocurrencies. By leveraging advanced data analytics tools and APIs, this report will empower stakeholders with critical information to make informed decisions in the volatile cryptocurrency market.
+This business case proposes the development of a real-time report that provides comprehensive insights into the performance and sentiment analysis of the top crypto currencies globally, by leveraging advanced data analytics tools and APIs, this report will empower stakeholders with critical information to make informed decisions in the volatile cryptocurrency market.
 
 ## Problem Statement
 The cryptocurrency market is characterized by rapid price fluctuations, evolving regulatory landscapes, and diverse investor sentiment. Lack of access to real-time, comprehensive data can lead to suboptimal investment decisions and missed opportunities.
