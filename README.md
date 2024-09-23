@@ -26,8 +26,8 @@ The cryptocurrency market is characterized by rapid price fluctuations, evolving
 
 ## Solution
 The proposed solution involves the following steps:
-- Data Extraction: Utilize the CoinMarketCap API to extract live data on the top cryptocurrencies, including market capitalization, trading volume, price, and 
-  other relevant metrics. Also wewill leverage Google Custom Search Engine API to extract latest information, news,opinions and insightson the crypto market.
+- Data Extraction: Utilize the CoinMarketCap API to extract live data on the top cryptocurrencies, including market capitalization, trading volume, price, and  other relevant metrics. Also we will leverage 
+  Google Custom Search Engine API to extract latest information, news,opinions and insights on the crypto market.
 - Data Transformation: Employ Synapse Data Engineer in Microsoft Fabric to transform and cleanse the extracted data, ensuring data quality and consistency.
 - Sentiment Analysis: Leverage the Google CSE JSON API to extract daily news and opinions related to the top  cryptocurrencies. Perform sentiment analysis using 
   Synapse Data Science to gauge market sentiment and identify emerging trends.
@@ -53,7 +53,7 @@ The proposed solution involves the following steps:
 - Email Alert: Data Activator in Power BI
 
 # Summary
-The live cryptocurrency performance and sentiment analysis report offers a valuable tool for analyst, would be investors and other stakeholders seeking to navigate the complex and dynamic cryptocurrency market. By providing real-time insights that support informed decision-making, this report is leverage has a significant investment value.
+The live cryptocurrency performance and sentiment analysis report offers a valuable tool for Crypto analyst, would be investors and other stakeholders seeking to navigate the complex and dynamic cryptoc market. By providing real-time insights and analysis that support informed decision-making, this report leverage the robustness of Microsoft Fabrics  tools of  Synapse Data Engineering, Synapse Data Science & Power BI.
 
 ## Solution Architecture
 
@@ -84,7 +84,7 @@ The live cryptocurrency performance and sentiment analysis report offers a valua
 ##### There are mainly two ways to extract data from a website or webpage. One, using the API of the website . Two, through web scraping by accessing the HTML of the webpage to extract data. In this project we will be using APIs to extract data from two different sources.
 Configuring Your Data Sources
 
-### 1.Create a free CoinMarketCap API 
+### 1.Create a free CoinMarketCap API Credentials
 Steps:
 ##### API KEY
 - Log on to: https://coinmarketcap.com/api/
@@ -110,7 +110,7 @@ Steps:
 - Log on to Google Cloud Platform: https://console.cloud.google.com/welcome?project
 - On the top-left, Click on "My Google Search API"
 - From the dropdown, on the top-right, click "New Project"
-- Under "Project Name" to the left, Input your project name <My Google Search API 2>
+- Under "Project Name" to the left, Input your project name (My Google Search API 2)
 - Then, click "Create" button.
 Then on Google Cloud Window, Under Quick Access
 - Click on "API Apis& Service" tab,--> Library-->
@@ -160,7 +160,7 @@ Prerequisite: Enable Microsoft Fabric in Power BI Account as an Admin or Tenant.
 - At the bottom, click( + New Workspace )
   - A drop down at the top right; Enter name of workspace " Crypto Project "
   - Optional: In the description box, give detail description of project.
-  - Scroll downward to "Advance" assign licensing to the workspace by clicking on "Trial" if you using trial version or " Premium Capacity", if you are using premium license.
+  - Scroll downward to "Advance" assign licensing to the workspace by clicking on "Trial", if you using trial version. Or " Premium Capacity", if you are using premium license.
   - Click Apply button
 
 ### 3b. Create and configure Storage in Fabric environment, i.e. Lakehouse Database.
