@@ -172,8 +172,8 @@ Switch from Power BI environment to Data Engineering environment
 - Click "create"
 
 ## Data Ingestion
-In the data ingestion stage, we will be creating two different Data Factory to extracting  two separate set of data from different sources using different APIs,  The data are 
-1.Daily statistics of to top crypto currencies and 
+In the data ingestion stage, you will be creating two different Data Factory to extracting  two sets of data from different sources using different APIs,  The data are 
+1.Daily statistics of top crypto currencies and 
 2. Latest News and opinions on crypto currencies.
 
 #### Data Ingestion For Crypto Data
@@ -202,10 +202,10 @@ Using the Data Factory component of Fabric.
   - On "Connection" field drop-down, select previously created Lakehouse Database "Crypto"
   - On " Root Folder" field, Choose "File".- File because we 're copying the raw data in a JSON format.
   - On "File Path" field, Leave the "Directory" field empty. Fill the "File Name" with a file name, say(crypto_data.json). This will be the file name in the of copy data in destination Lakehouse DB.
-  -On "File Format" field drop-down, choose "JSON"
+  - On "File Format" field drop-down, choose "JSON"
   - Then, click on the "save" tab at the top-left to save the pipeline
   - Click "Run" tab at the top to run pipeline.
-Data is Successfully copy from CoinMarketCap End point source to Lakehouse DB
+Data is Successfully copied from CoinMarketCap End point to Lakehouse DB
 
 ##### Screen Shot
 ![Screenshot 2024-09-15 204810](https://github.com/user-attachments/assets/2e4c9794-df48-49d4-a699-21c219170e53)
@@ -239,11 +239,9 @@ Using the Data Factory component of Fabric.
   - On "File Format" field drop-down, choose "JSON"
   - Then, click on the "save" tab at the top-left to save the pipeline
   - Click "Run" tab at the top to run pipeline.
-Data is Successfully copy from Google CSE end point to Lakehouse DB
+Data is Successfully copied from Google CSE end point to Lakehouse DB
 
 ![Screenshot 2024-09-15 221748](https://github.com/user-attachments/assets/589bdf88-db34-4237-b56d-1cb8ab14bd45)
-
-
 
 ## Data Transformation
 In the data transformation phase, we will be processing our data using two different Spark Notebooks to transform extracted data from CoinMarketCap API and Google CSE API respectively.
@@ -253,7 +251,7 @@ This is done using Synapse Data Engineering Component of Fabric.
 - On the bottom left, click on the Power BI icon or whatever icon present there.
 - From the list of icons, choose Synapse Data Engineering. 
 - In Synapse Data Engineering environment, click on "Notebook" tab,-To create a Spark Notebook to "transform" the raw json file into a clean data table.
-- On the top-left, click on the Notebook name and rename appropriately for ease referencing.
+- On the top-left, click on the Notebook name and rename appropriately for easy referencing.
 Step 1.
 Use the created Notebook to import and read the raw json file that exist in stored Lakehouse Database.
 - On the Left, click on "Lakehouse" button.
@@ -620,17 +618,16 @@ except Exception as e:
 ```
 
 #### Crypto Data
-
 ##### DATA CLEANING (Continuation of Transformation of Crypto Data).
 This is done using Synapse Data Engineering Component of Fabric.
 - On the bottom left, click on the Power BI icon or whatever icon present there.
 - From the list of icons, choose Synapse Data Engineering. 
 - In Synapse Data Engineering environment, click on "Notebook" tab,-To create a Spark Notebook to "transform" the raw json file into a clean data table.
-- On the top-left, click on the Notebook name and rename appropriately foe ease referencing.
+- On the top-left, click on the Notebook name and rename appropriately for easy referencing.
 Step 1.
 Use the created Notebook to import and read the delta table that exist in stored Lakehouse Database.
 - On the Left, click on "Lakehouse" button.
-- On the left, click "Add Lakehouse" button.- This help in accessing the different tables and files that reside in the Lakehouse Database directly from the Notebook.
+- On the left, click "Add Lakehouse" button.- This helps in accessing the different tables and files that reside in the Lakehouse Database directly from the Notebook.
 - Choose "Existing Lakehouse".
 - Click "Add".
 - Check or choose the Lakehouse where the delta table resides.
@@ -866,7 +863,7 @@ Steps:
 Move back to your workspace.
 - In your workspace, you will see the drop-down of all the resources you have created in your workspace.
 - select the Semantic Model.
-- At the top, under "Discover Business Insights", click on the drop-down arrow on "Explore this Data"--> choose "Auto Create Report" option. Power BI automatically generate a report base     on data in Your Semantic Model
+- At the top, under "Discover Business Insights", click on the drop-down arrow on "Explore this Data"--> choose "Auto Create Report" option. Power BI automatically generates a report base on data in Your Semantic Model
 ##### Let's further build on the  Auto Created Report by drilling down on the data in your Semantic Model to build a dynamic report.
 - Click on "Edit" tab at the top. Then, continue.
 - At the bottom of the page, click on "+" to create a blank new page for our visuals.
@@ -983,7 +980,7 @@ Then, close the Semantic Model.
 - Then, go back to your dashboard to build a live report.Using the "Card" visual. Create three "Card" visuals for each of the sentiment measures created.
 ##### Page 1:
 ##### Screen Shot
-![Screenshot 2024-09-22 131430](https://github.com/user-attachments/assets/4e6ee573-e716-4500-9516-1ea3fe1a72b4)
+![Screenshot 2024-09-23 215617](https://github.com/user-attachments/assets/bfb45809-2b02-41a6-8900-f0c5e41f5ebe)
 
 2a. Create a   Crypto_News table in the report by clicking on the the "table" visual to the top right, under visualization pane, you have an empty table in your canvas.
 - Add required fields. First, expand the table by clicking on your table name, say"sentiments" under (Data) Title , to your top right. This reveals in your table as well as the newly created measures for the 
@@ -998,29 +995,29 @@ Then, close the Semantic Model.
 *** Images
 
 - 2b. Use the "Line Graph" visuals to visualize the 4 days "Price Moving Average" measure we created and "Price" .
-- On the  Y-axis field, drag and drop "4 Days Moving Average" measure and "Price" metric While on the X-axis field, drag and drop the "date" column.
+- On the  Y-axis field, drag and drop "3 Days Moving Average" measure While on the X-axis field, drag and drop the "date" column.
 ##### Page 2:
 ##### Screen Shot
-![Screenshot 2024-09-22 131803](https://github.com/user-attachments/assets/ffc4bb42-455a-4fef-8d21-da011ff1dcd0)
+![Screenshot 2024-09-23 215755](https://github.com/user-attachments/assets/7e77c3f1-c14c-4eb8-9808-5b630aa2a282)
 
-3. Create a Crypto_Currency table showing tthe top 12 cryptocurrencies and their corresponding statistics at a particular time daily.Click on the the "table" visual to the top right, under visualization pane, 
+3. Create a Crypto_Currency table showing the top 12 cryptocurrencies and their corresponding statistics at a particular time daily.Click on the the "table" visual at the top right, under visualization pane, 
    you have an empty table in your canvas.
 - Add required fields. First, expand the table by clicking on your table name, say"tbl_cleaned_data" under (Data) Title , to your top right. This reveals in your table as well as the newly created measures for 
   the "Crypto" table.
-- Select the following fields/columns [Name, Price, Percent Change(24h), Volume, Market Cap, Total Supply, Circulating Supply, Fully Diluted Market Cap, Date) to populate your table.
+- Select the following fields/columns (Name, Price, Percent Change(24h), Volume, Market Cap, Total Supply, Circulating Supply, Fully Diluted Market Cap, Date) to populate your table.
 - Next, Create a Date Slicer by using the slicer visual under "visualisation Pane"
 - Format the "Date" slicer to "drop-down" for capturing each date, to make your report organise by date.
 - Filter the "Crypto" Table by date, such that the dashboard by default will show the report by current date,with the option to filter the report by previous date.
 ##### Page 3:
 ##### Screen Shot
-![Screenshot 2024-09-22 132813](https://github.com/user-attachments/assets/ee1757b9-1b06-4dbe-b663-413ae0d7f08c)
+![Screenshot 2024-09-23 215940](https://github.com/user-attachments/assets/f2488b4c-f64d-4bc1-aef3-92376d2ee161)
 
-- 4a. Create a "Total Market Cap Dominance By Currency by Currency" Using the Treemap Chart visual to explain the market share of each crypto currency in a pool o 12  crypto currencies.
+- 4a. Create a "Total Market Cap Dominance By Currency by Date" Using the Treemap Chart visual to explain the market share of each crypto currency in a pool of 12 crypto currencies.
 - 4b. Create a "Total Market Capitalization " of the 12 top Crypto Currencies, using the Donot Chart.
 - 4c. Create a "24h Change in Price " chart of the top 12 Crypto currencies using waterfall chart.
 ##### Page 4:
 ##### Screen Shot
-![Screenshot 2024-09-22 133035](https://github.com/user-attachments/assets/8d85fb1c-4ace-459a-9ea8-bc1285f5dbbe)
+![Screenshot 2024-09-23 220109](https://github.com/user-attachments/assets/4dd61a44-9cf0-4f86-917e-f3e6644fc592)
 
 ## Pipeline 1 
 #### Pipeline Orchestration For Crypto Data Using Data Factory
@@ -1044,15 +1041,16 @@ Then, run your pipeline.
 
 ![Screenshot 2024-09-20 181104](https://github.com/user-attachments/assets/f30192d4-2052-4a13-b60f-635640dbf175)
 
-Schedule Pipeline To Run Once Daily AT 6: 00 PM GMT + 1
-The pipeline will be automatically triggered at 6: pm in the evening every day, ingesting the latest data on 12 selected crypto  currencies  and automatically updates the Power BI report with the latest data on crypto currencies.
+- Schedule Pipeline To Run Once Daily AT 6: 00 PM GMT + 1
+- The pipeline will be automatically triggered at 6: pm in the evening every day, ingesting the latest data on 12 selected crypto  currencies  and automatically updates the Power BI report with the latest data 
+  on crypto currencies.
 ##### Steps:
 - In Data Factory canvas, click on "Schedule" button at the top.
 - Check the radio button "ON" under Schedule Run.
 - From "Repeat" drop-down, Pick "Daily" --To choose pipeline run frequency option.
-- Under "Time", pick the time you want to schedule the pipeline to run, say 6:00 PM GMT +1
+- Under "Time", pick the time you want to schedule the pipeline to run, say 6:45 PM GMT +1
 - Select the start date-time and end date-time of your schedule pipeline run from the "Start Date and Time" and "End Date and Time" calendar.
-- "Time Zone" .You have the option of selecting your time zone, but the default is the time zone you are based on, so it's advisable to go with the default time zone.
+- "Time Zone".You have the option of selecting your time zone, but by default the time zone is based on your location, so it's advisable to go with the default time zone.
 -  Then, click "Apply"
 ##### Pipeline Monitor.
 Go to Data Factory
@@ -1076,13 +1074,12 @@ Creating Pipeline using Data Factory to orchestrate everything that we have done
 - Connect the "Data Transformation" to the new Notebook say "Crypto News Sentiments" using "On Success"
 - "General" tab --> "Name (Input: "Crypto News Sentiments")
 - "Settings" tab --> "workspace"(from the drop-down, choose the name of your workspace)--> Then, "Notebook" (from the drop-down, choose the Notebook you used for Sentiment Analysis)
-Then, click save on your top-left, to save your pipeline
-Then, run your pipeline.
+- Then, click save on your top-left, to save your pipeline
+- Then, run your pipeline.
 ##### Screen shot.
-
 ![Screenshot 2024-09-20 185508](https://github.com/user-attachments/assets/95cef349-5991-4071-9b1d-a13860255271)
 
-Schedule Pipeline To Run Once Daily AT 7: 00 PM GMT + 1
+- Schedule Pipeline To Run Once Daily AT 7: 00 PM GMT + 1
 The pipeline will be automatically triggered at 7: pm in the evening every day, ingesting the latest news and opiniond on crypto  currencies  and automatically updates the Power BI report with the latest sentiments on crypto currencies.
 ##### Steps:
 - In Data Factory canvas, click on "Schedule" button at the top.
@@ -1090,7 +1087,7 @@ The pipeline will be automatically triggered at 7: pm in the evening every day, 
 - From "Repeat" drop-down, Pick "Daily" --To choose pipeline run frequency option.
 - Under "Time", pick the time you want to schedule the pipeline to run, say 6:00 PM GMT +1
 - Select the start date-time and end date-time of your schedule pipeline run from the "Start Date and Time" and "End Date and Time" calendar.
-- "Time Zone" .You have the option of selecting your time zone, but the default is the time zone you are based on, so it's advisable to go with the default time zone.
+- "Time Zone".You have the option of selecting your time zone, but by default the time zone is based on your location, so it's advisable to go with the default time zone.
 -  Then, click "Apply"
 ##### Pipeline Monitor.
 Go to Data Factory
