@@ -994,11 +994,11 @@ Then, close the Semantic Model.
 - Finally, remember to save your work.
 *** Images
 
-- 2b. Use the "Line Graph" visuals to visualize the 4 days "Price Moving Average" measure we created and "Price" .
-- On the  Y-axis field, drag and drop "3 Days Moving Average" measure While on the X-axis field, drag and drop the "date" column.
+- 2b. Use the "Line Graph" visuals to visualize the 3 days "Price Moving Average" measure and daily "Price" quotes.
+- On the primary "Y-axis" field and secondary "Y-axis" field drag respectively, drag and drop "3 Days Moving Average" measure and "Price" respectively. While on the X-axis field, drag and drop the "date" column.
 ##### Page 2:
 ##### Screen Shot
-![Screenshot 2024-09-23 215755](https://github.com/user-attachments/assets/7e77c3f1-c14c-4eb8-9808-5b630aa2a282)
+![Screenshot 2024-09-24 232713](https://github.com/user-attachments/assets/820ea57f-ed8c-4074-8063-0aed2723d345)
 
 3. Create a Crypto_Currency table showing the top 12 cryptocurrencies and their corresponding statistics at a particular time daily.Click on the the "table" visual at the top right, under visualization pane, 
    you have an empty table in your canvas.
