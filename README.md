@@ -1017,7 +1017,7 @@ Then, close the Semantic Model.
 - 4c. Create a "24h Change in Price " chart of the top 12 Crypto currencies using waterfall chart.
 ##### Page 4:
 ##### Screen Shot
-![Screenshot 2024-09-23 220109](https://github.com/user-attachments/assets/4dd61a44-9cf0-4f86-917e-f3e6644fc592)
+![Screenshot 2024-09-25 172626](https://github.com/user-attachments/assets/8f89a313-ae0c-407b-8c01-1ba2745b981a)
 
 ## Pipeline 1 
 #### Pipeline Orchestration For Crypto Data Using Data Factory
