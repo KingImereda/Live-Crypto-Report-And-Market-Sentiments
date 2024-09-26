@@ -931,7 +931,7 @@ IF (
 - From the dropdown, click on "New Measure"
 - Then, input the following DAX script for each of the measures and save
 
-4 Days Price Moving Average:
+3 Days Price Moving Average:
 
 ```
 4DayMovingAverage = 
@@ -975,6 +975,22 @@ Total Market Cap Dominance = DIVIDE(
     CALCULATE(SUM([Market_Cap]), ALL('tbl_cleaned_data')),
     0
 ) * 100
+
+```
+Current Price of Cryptocurrency( Leveraging  slicer has crypto currency)
+```
+Crypto Price (Dynamic) = 
+VAR SelectedCrypto = VALUES( 'tbl_cleaned_data'[name] )
+VAR SelectedDate = VALUES( 'tbl_cleaned_data'[Date] )
+RETURN
+    CALCULATE(
+        MAX( tbl_cleaned_data[Price] ),
+        FILTER(
+            tbl_cleaned_data,
+            tbl_cleaned_data[name] IN SelectedCrypto &&
+            tbl_cleaned_data[Date] = MAX( tbl_cleaned_data[Date] )
+        )
+    )
 
 ```
 Then, close the Semantic Model.
