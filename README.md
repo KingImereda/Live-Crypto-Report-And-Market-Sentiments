@@ -53,7 +53,7 @@ The proposed solution involves the following steps:
 - Email Alert: Data Activator in Power BI
 
 # Summary
-![Screenshot 2024-09-26 223253](https://github.com/user-attachments/assets/e626877b-1c3f-4d5f-9f48-46eda4f65c88)
+![Screenshot 2024-09-26 225514](https://github.com/user-attachments/assets/06cc76a9-b245-486a-a02c-44701ef072f9)
 
 The live cryptocurrency performance and sentiment analysis Dashboard offers a valuable tool for Crypto analyst, would be investors and other stakeholders seeking to navigate the complex and dynamic cryptoc market. By providing real-time insights and analysis that support informed decision-making, this dashboard leverage the robustness of Microsoft Fabrics  tools of  Synapse Data Engineering, Synapse Data Science & Power BI.
 
