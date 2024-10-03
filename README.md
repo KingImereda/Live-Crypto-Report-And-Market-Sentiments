@@ -1016,7 +1016,7 @@ Then, close the Semantic Model.
 - On the primary "Y-axis" field and secondary "Y-axis" field drag respectively, drag and drop "3 Days Moving Average" measure and "Price" respectively. While on the X-axis field, drag and drop the "date" column.
 ##### Page 2:
 ##### Screen Shot
-![Screenshot 2024-09-24 232713](https://github.com/user-attachments/assets/820ea57f-ed8c-4074-8063-0aed2723d345)
+![Screenshot 2024-10-03 133138](https://github.com/user-attachments/assets/1a9b08cb-a30e-40dc-baaa-f40f847d2733)
 
 3. Create a Crypto_Currency table showing the top 12 cryptocurrencies and their corresponding statistics at a particular time daily.Click on the the "table" visual at the top right, under visualization pane, 
    you have an empty table in your canvas.
