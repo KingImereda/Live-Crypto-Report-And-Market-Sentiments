@@ -155,7 +155,7 @@ Where
 - cx = YOUR_SEARCH_ENGINE_ID
 - q = SEARCH_QUERY&searchType=image
 
-### 3a.Create and configure Power BI Workspace for this project
+### 3a.Create and configure Microsoft Fabric Workspace for this project
 Prerequisite: Enable Microsoft Fabric in Power BI Account as an Admin or Tenant.
 - Go to (app.powerbi.com)
 - Navigate to "workspaces" tab on the left
