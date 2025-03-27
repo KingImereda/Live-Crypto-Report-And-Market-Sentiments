@@ -1079,7 +1079,7 @@ Go to Data Factory
 
 ## Pipeline 2 
 #### Pipeline Orchestration For Crypto News and Opinions Using Data Factory
-Creating Pipeline using Data Factory to orchestrate everything that we have done so far in this end to end project.
+Creating Pipeline, using Data Factory to orchestrate everything that we have done so far in this end to end project.
 - Go into your workspace
 - Click on your Data Factory Pipeline
 ##### Orchestration:
